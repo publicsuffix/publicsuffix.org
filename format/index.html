@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="Content-Language" content="en-gb" />
+<title>Public Suffix List: Submit amendments to the List</title>
+<meta name="description" content="The Public Suffix List" />
+<meta name="keywords" content="mozilla, foundation, mozilla.org, public suffix list, tld, browser" />
+<meta name="robots" content="all" />
+<meta http-equiv="imagetoolbar" content="false" />
+<link rel="stylesheet" type="text/css" href="/style.css" />
+</head>
+
+<body>
+<div id="wrap">
+
+	<div id="header"><h1>Public Suffix List</h1></div>
+
+	<div id="menu">
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/learn/">Learn more</a></li>
+			<li><a href="/faq/"><acronym title="Frequently Asked Questions">FAQs</acronym></a></li>
+			<li id="current"><a href="#">Submit amendments</a></li>
+			<li><a href="/browser/">Browser manufacturers</a></li>
+			<li><a href="/list/">The List</a></li>
+		</ul>
+	</div>
+		
+	<div id="main">
+
+		<h1>Format for submissions</h1>
+
+		<p>Your email should have two sections: one for additions and one for deletions. If a rule needs to be amended, list it in the deletions section, and list the correct rule in the additions section.</p>
+
+		<p>Rules should be in the following format:</p>
+
+		<ul>
+			<li>There should be one rule per line.</li>
+			<li>Each rule should list the entire public suffix, with the subdomain portions separated by dots (.) as usual. A leading dot is optional.</li>
+			<li>The wildcard character * (asterisk) will match any valid sequence of characters.</li>
+			<li>Wildcards may only appear as an entire level of a rule. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line). </li>
+			<li>An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule will be used instead of any other matching rule.</li>
+		</ul>
+
+		<p>Here is an example:</p>
+
+		<code>
+			com<br />
+			*.uk<br />
+			// Hosts in .hokkaido.jp can't set cookies below level 4...<br />
+			*.hokkaido.jp<br />
+			*.tokyo.jp<br />
+			// ...except hosts in pref.hokkaido.jp, which can set level 3.<br />
+			!pref.hokkaido.jp<br />
+			!city.shizuoka.jp<br />
+			!metro.tokyo.jp
+		</code>
+
+		<p>The example above would be interpreted as follows:</p>
+
+		<ul>
+			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.com</em>.</li>
+			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.&lt;something&gt;.uk</em>.</li>
+			<li>Cookies <strong>may not</strong> be set for <em>&lt;anything&gt;.uk</em> (implicit from previous rule).</li>
+			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.&lt;something&gt;.hokkaido.jp</em> and <em>&lt;anything&gt;.&lt;something&gt;.tokyo.jp</em>.</li>
+			<li>Cookies <strong>may not</strong> be set for <em>&lt;anything&gt;.hokkaido.jp</em> or <em>&lt;anything&gt;.tokyo.jp</em> (implicit from previous rules).</li>
+			<li>Cookies <strong>may</strong> be set for <em>pref.hokkaido.jp</em>, <em>city.shizuoka.jp</em> and <em>metro.tokyo.jp</em>, even though the previous rule would not allow it.</li>
+		</ul>
+
+		<h2 id="emailaddress">Email address for submissions</h2>
+
+		<p>Please note that all emails must originate from your registry's domain, otherwise they will be rejected. For each email received by us, a confirmation will be sent. The confirmation email makes sure that only genuine submissions are included in the List.</p>
+
+		<p>The email address for submissions is:</p>
+
+		<div class="button"><a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#115;&#117;&#98;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#115;&#64;&#112;&#117;&#98;&#108;&#105;&#99;&#115;&#117;&#102;&#102;&#105;&#120;&#46;&#111;&#114;&#103;">&#115;&#117;&#98;&#109;&#105;&#115;&#115;&#105;&#111;&#110;&#115;&#64;&#112;&#117;&#98;&#108;&#105;&#99;&#115;&#117;&#102;&#102;&#105;&#120;&#46;&#111;&#114;&#103;</a></div>
+
+	</div>
+
+	<div id="footer">
+		<div id="footer-content">
+		<div id="footer-left">
+			&copy; Copyright 2007 <a href="http://www.mozilla.org/">Mozilla Foundation</a>. All rights reserved.<br />
+			Design by <a href="http://www.styleshout.com/">styleshout</a> and <a href="http://www.rubenarakelyan.com/">Ruben Arakelyan</a>.
+		</div>
+		</div>
+	</div>
+
+</div>
+
+</body>
+</html>
