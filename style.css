@@ -112,7 +112,6 @@ code {
 }
 
 acronym {
-	cursor: help;
 	border-bottom: 1px solid #777;
 }
 
@@ -162,6 +161,19 @@ input.button {
 	color: #75a54b;
 	font: bolder 12px Verdana, sans-serif;
 	border: 1px solid #ccc;
+}
+
+dt {
+	font-weight: bold;
+	margin-bottom: 1em;
+}
+
+dd {
+	margin-bottom: 1em;
+}
+
+ol li {
+	margin-bottom: 1em;
 }
 
 /**************************************
