@@ -30,42 +30,48 @@
 
 		<h1>List format</h1>
 
+    <p>A public suffix is a set of DNS names or wildcards concatenated
+       with dots. It represents the part of a domain name which is <b>not</b>
+       under the control of the individual registrant.</p>
+    
 		<p>The format of the list is as follows:</p>
 
 		<ul>
       <li>The list is a set of rules, with one rule per line.</li>
-			<li>Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. A leading dot is optional.</li>
       <li>Each line is only read up to the first whitespace; entire lines can also be commented using //.</li>
+			<li>Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. A leading dot is optional.</li>
 			<li>The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.)</li>
 			<li>Wildcards may only be used to wildcard an entire level. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line). </li>
       <li>If a hostname matches more than one rule in the file, the longest matching rule (the one with the most levels) will be used.</li>
 			<li>An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule takes priority over any other matching rule.</li>
 		</ul>
 
-		<p>Here is an example (incomplete) list section:</p>
+		<p>Here is an example (incomplete) list section. The rules are numbered, but the numbers would not appear in the real file:</p>
 
 		<code>
-			com<br />
-			*.uk<br />
-			// Hosts in .hokkaido.jp can't set cookies below level 4...<br />
-			*.hokkaido.jp<br />
-			*.tokyo.jp<br />
-			// ...except hosts in pref.hokkaido.jp, which can set cookies at level 3.<br />
-			!pref.hokkaido.jp<br />
-			!city.shizuoka.jp<br />
-			!metro.tokyo.jp
+			<i>1.</i> com<br /><br />
+			<i>2.</i> *.jp<br />
+			&nbsp;&nbsp;&nbsp;// Hosts in .hokkaido.jp can't set cookies below level 4...<br />
+			<i>3.</i> *.hokkaido.jp<br />
+			<i>4.</i> *.tokyo.jp<br />
+			&nbsp;&nbsp;&nbsp;// ...except hosts in pref.hokkaido.jp, which can set cookies at level 3.<br />
+			<i>5.</i> !pref.hokkaido.jp<br />
+			<i>6.</i> !metro.tokyo.jp
 		</code>
 
-		<p>The example above would be interpreted as follows, in the case of cookie-setting:</p>
+		<p>The example above would be interpreted as follows, in the case of cookie-setting, and using "foo" and "bar" as generic hostnames:</p>
 
-		<ul>
-			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.com</em>.</li>
-			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.&lt;something&gt;.uk</em>.</li>
-			<li>Cookies <strong>may not</strong> be set for <em>&lt;anything&gt;.uk</em> (implicit from previous rule).</li>
-			<li>Cookies <strong>may</strong> be set for <em>&lt;anything&gt;.&lt;something&gt;.hokkaido.jp</em> and <em>&lt;anything&gt;.&lt;something&gt;.tokyo.jp</em>.</li>
-			<li>Cookies <strong>may not</strong> be set for <em>&lt;anything&gt;.hokkaido.jp</em> or <em>&lt;anything&gt;.tokyo.jp</em> (implicit from previous rules).</li>
-			<li>Cookies <strong>may</strong> be set for <em>pref.hokkaido.jp</em>, <em>city.shizuoka.jp</em> and <em>metro.tokyo.jp</em>, because the exceptions override the previous rule.</li>
-		</ul>
+		<ol>
+			<li>Cookies <strong>may</strong> be set for <tt>foo.com</tt>.</li>
+			<li>Cookies <strong>may</strong> be set for <tt>foo.bar.jp</tt>.<br/>
+      Cookies <strong>may not</strong> be set for <tt>bar.jp</tt>.</li>
+			<li>Cookies <strong>may</strong> be set for <tt>foo.bar.hokkaido.jp</tt>.<br />
+      Cookies <strong>may not</strong> be set for <tt>bar.hokkaido.jp</tt>.
+      <li>Cookies <strong>may</strong> be set for <tt>foo.bar.tokyo.jp</tt>.<br />
+      Cookies <strong>may not</strong> be set for <tt>bar.tokyo.jp</tt>.</li>
+			<li>Cookies <strong>may</strong> be set for <tt>pref.hokkaido.jp</tt> because the exception overrides the previous rule.</li>
+      <li>Cookies <strong>may</strong> be set for  <tt>metro.tokyo.jp</tt>, because the exception overrides the previous rule.</li>
+		</ol>
 
 	</div>
 
