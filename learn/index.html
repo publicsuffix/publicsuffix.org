@@ -39,6 +39,22 @@
 		<p>Software using the Public Suffix List will be able to detemine where cookies may and may not be set, protecting the user's data from theft.</p>
 
 		<p>As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.</p>
+    
+    <p>To take an example, the list of things for which Public Suffixes are
+    used in Firefox 3 is:
+    
+    <ul>
+      <li>Restricting cookie-setting (as explained above)
+      <li>Restricting the setting of the document.domain property
+      <li>Sorting in the download manager
+      <li>Sorting in the cookie manager
+      <li>Searching in history
+      <li>"Responsible domain" display for some SSL certificates (not enabled by default)
+    </ul>
+    </p>
+    
+    <p>In the future it may be used for, for example, restricting DOM Storage
+    allowances on a per-domain basis.</p>
 
 	</div>
 
