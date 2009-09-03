@@ -1,67 +1,101 @@
+<!-- process me -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Language" content="en-gb" />
-<title>Public Suffix List: Learn more about the Public Suffix List</title>
-<meta name="description" content="The Public Suffix List" />
-<meta name="keywords" content="mozilla, foundation, mozilla.org, public suffix list, tld, browser" />
-<meta name="robots" content="all" />
-<meta http-equiv="imagetoolbar" content="false" />
-<link rel="stylesheet" type="text/css" href="/style.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-gb" />
+  <title>Learn more about the Public Suffix List</title>
+  <meta name="description" content="The Public Suffix List" />
+  <meta name="keywords" content="mozilla, foundation, mozilla.org, public suffix list, tld, browser" />
+  <meta name="robots" content="all" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <style type="text/css" media="all">#menu ul li a.learn {background: #fafafa; color: #333;}</style>
+  
+
 </head>
 
 <body>
-<div id="wrap">
+  <div id="wrap">
 
-	<div id="header"><h1>Public Suffix List</h1></div>
+    <div id="header"><h1>Public Suffix List</h1></div>
 
-	<div id="menu">
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li id="current"><a href="#">Learn more</a></li>
-			<li><a href="/faq/"><acronym title="Frequently Asked Questions">FAQs</acronym></a></li>
-			<li><a href="/submit/">Submit amendments</a></li>
-			<li><a href="/list/">The List</a></li>
-		</ul>
-	</div>
-		
-	<div id="main">
+    <div id="menu">
+      <ul>
+        <li><a class="" href="../index.html">Home</a></li>
+        <li><a class="learn" href="../learn/">Learn More</a></li>
+        <li><a class="faq" href="../faq/"><acronym title="Frequently Asked Questions">FAQs</acronym></a></li>
+        <li><a class="submit" href="../submit/">Submit Amendments</a></li>
+        <li><a class="list" href="../list/">The List</a></li>
+        <li><a class="format" href="../format/">List Format</a></li>
+      </ul>
+    </div>
+      
+    <div id="main">
 
-		<h1>Learn more about the Public Suffix List</h1>
+      <h2>Learn more about the Public Suffix List</h2>
+
+<!-- end header -->
 
 		<p>The Public Suffix List is a cross-vendor initiative to provide an accurate list of domain name suffixes.</p>
 
-		<p>The usefulness of this can be seen if we take the example of cookies. Currently, browsers use an algorithm which basically only denies setting wide-ranging cookies for top-level domains with no dots (e.g. com or org). However, this does not work for top-level domains where only third-level registrations are allowed (e.g. .co.uk). In these cases, websites can set a cookie for .co.uk which will be passed onto every website registered under co.uk.</p>
+		<p>The usefulness of this can be seen if we take the example of cookies. In the past, browsers used an algorithm which only denied setting wide-ranging cookies for top-level domains with no dots (e.g. com or org). However, this did not work for top-level domains where only third-level registrations are allowed (e.g. .co.uk). In these cases, websites could set a cookie for .co.uk which would be passed onto every website registered under co.uk.</p>
 
-		<p>Since there is no algorithmic method of finding the highest level at which a domain may be registered for a particular top-level domain (the policies differ with each registry), the only method is to create a list. This is the aim of the Public Suffix List.</p>
+		<p>Since there was and remains no algorithmic method of finding the highest level at which a domain may be registered for a particular top-level domain (the policies differ with each registry), the only method is to create a list. This is the aim of the Public Suffix List.</p>
 
-		<p>Software using the Public Suffix List will be able to detemine where cookies may and may not be set, protecting the user's data from theft.</p>
+		<p>Software using the Public Suffix List will be able to detemine where cookies may and may not be set, protecting the user from being tracked across sites.</p>
 
 		<p>As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.</p>
+
+<h3>Uses</h3>
+
+    <p>These are some of the uses of the list we know about. If you are using
+    it for something else, you are encouraged to tell us, because it helps us
+    to assess the potential impact of changes.</p>
     
-    <p>To take an example, the list of things for which Public Suffixes are
-    used in Firefox 3 is:
+    <p>Firefox:
     
     <ul>
-      <li>Restricting cookie-setting (as explained above)
+      <li>Restricting cookie-setting
       <li>Restricting the setting of the document.domain property
       <li>Sorting in the download manager
       <li>Sorting in the cookie manager
       <li>Searching in history
-      <li>"Responsible domain" display for some SSL certificates (not enabled by default)
+      <li>"Responsible domain" display for some SSL certificates
     </ul>
     </p>
     
     <p>In the future it may be used for, for example, restricting DOM Storage
     allowances on a per-domain basis.</p>
+    
+    <p>Chromium/Google Chrome:
+    
+    <ul>
+      <li>Restricting cookie-setting
+      <li>Determining whether entered text is a search or a website URL
+    </ul>
+    </p>
+    
+    <p>Opera:
+    
+    <ul>
+      <li>Restricting cookie-setting
+      <li>Restricting the setting of the document.domain property
+    </ul>
+    </p>
+    
+    
+
+<!-- start footer -->
 
 	</div>
 
 	<div id="footer">
 		<div id="footer-content">
 		<div id="footer-left">
-			&copy; Copyright 2007 <a href="http://www.mozilla.org/">Mozilla Foundation</a>. All rights reserved.<br />
+			&copy; Copyright 2007-9 <a href="http://www.mozilla.org/">Mozilla Foundation</a>. All rights reserved.<br />
 			Design by <a href="http://www.styleshout.com/">styleshout</a> and <a href="http://www.rubenarakelyan.com/">Ruben Arakelyan</a>.
 		</div>
 		</div>
