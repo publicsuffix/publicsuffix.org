@@ -1,44 +1,54 @@
+<!-- process me -->
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="Content-Language" content="en-gb" />
-<title>Public Suffix List: Submit amendments to the List</title>
-<meta name="description" content="The Public Suffix List" />
-<meta name="keywords" content="mozilla, foundation, mozilla.org, public suffix list, tld, browser" />
-<meta name="robots" content="all" />
-<meta http-equiv="imagetoolbar" content="false" />
-<link rel="stylesheet" type="text/css" href="/style.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Language" content="en-gb" />
+  <title>Submit amendments to the List</title>
+  <meta name="description" content="The Public Suffix List" />
+  <meta name="keywords" content="mozilla, foundation, mozilla.org, public suffix list, tld, browser" />
+  <meta name="robots" content="all" />
+  <meta http-equiv="imagetoolbar" content="false" />
+  
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+  <style type="text/css" media="all">#menu ul li a.format {background: #fafafa; color: #333;}</style>
+  
+
 </head>
 
 <body>
-<div id="wrap">
+  <div id="wrap">
 
-	<div id="header"><h1>Public Suffix List</h1></div>
+    <div id="header"><h1>Public Suffix List</h1></div>
 
-	<div id="menu">
-		<ul>
-			<li><a href="/">Home</a></li>
-			<li><a href="/learn/">Learn more</a></li>
-			<li><a href="/faq/"><acronym title="Frequently Asked Questions">FAQs</acronym></a></li>
-			<li id="current"><a href="/submit/">Submit amendments</a></li>
-			<li><a href="/list/">The List</a></li>
-		</ul>
-	</div>
-		
-	<div id="main">
+    <div id="menu">
+      <ul>
+        <li><a class="" href="../index.html">Home</a></li>
+        <li><a class="learn" href="../learn/">Learn More</a></li>
+        <li><a class="faq" href="../faq/"><acronym title="Frequently Asked Questions">FAQs</acronym></a></li>
+        <li><a class="submit" href="../submit/">Submit Amendments</a></li>
+        <li><a class="list" href="../list/">The List</a></li>
+        <li><a class="format" href="../format/">List Format</a></li>
+      </ul>
+    </div>
+      
+    <div id="main">
 
-		<h1>List format</h1>
+      <h2>Submit amendments to the List</h2>
+
+<!-- end header -->
 
     <p>A public suffix is a set of DNS names or wildcards concatenated
        with dots. It represents the part of a domain name which is <b>not</b>
        under the control of the individual registrant.</p>
     
-		<p>The format of the list is as follows:</p>
+		<h3>1. List Format</h3>
 
 		<ul>
       <li>The list is a set of rules, with one rule per line.</li>
       <li>Each line is only read up to the first whitespace; entire lines can also be commented using //.</li>
+      <li>Each line which is not entirely whitespace or begins with a comment contains a rule.
 			<li>Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. A leading dot is optional.</li>
 			<li>The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.)</li>
 			<li>Wildcards may only be used to wildcard an entire level. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line). </li>
@@ -46,6 +56,8 @@
 			<li>An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule takes priority over any other matching rule.</li>
 		</ul>
 
+    <h3>2. Example Of Use</h3>
+    
 		<p>Here is an example (incomplete) list section. The rules are numbered, but the numbers would not appear in the real file:</p>
 
 		<code>
@@ -73,12 +85,41 @@
       <li>Cookies <strong>may</strong> be set for  <tt>metro.tokyo.jp</tt>, because the exception overrides the previous rule.</li>
 		</ol>
 
+    <h3>3. Formal Algorithm</h3>
+    
+    <p>Here is an algorithm for determining the Public Suffix of a domain. (Note: it may not be the most efficient algorithm.) The domain and all rules must be canonicalized in the normal way for hostnames - lower-case, punycode (<a href="http://www.ietf.org/rfc/rfc3492.txt">RFC 3492</a>).</p>
+    
+    <h4>Definitions</h4>
+    
+    <ul>
+      <li>The Public Suffix List consists of a series of lines, separated by \n.
+      <li>Each line is only read up to the first whitespace; entire lines can also be commented using //.</li>
+      <li>Each line which is not entirely whitespace or begins with a comment contains a rule.
+      <li>A rule may begin with a "!" (exclamation mark). If it does, it is labelled as a "exception rule" and then treated as if the exclamation mark is not present.
+      <li>A domain or rule can be split into a list of labels using the separator "." (dot). The separator is not part of any of the labels.
+      <li>A domain is said to match a rule if, when the domain and rule are both split, and one compares the labels from the rule to the labels from the domain, beginning at the right hand end, one finds that for every pair either they are identical, or that the label from the rule is "*" (star). The domain may legitimately have labels remaining at the end of this matching process.
+    </ul>
+
+    <h4>Algorithm</h4>
+    
+    <ol>
+      <li>Match domain against all rules and take note of the matching ones.
+      <li>If no rules match, the prevailing rule is "*".
+      <li>If more than one rule matches, the prevailing rule is the one which is an exception rule. 
+      <li>If there is no matching exception rule, the prevailing rule is the one with the most labels.
+      <li>If the prevailing rule is a exception rule, modify it by removing the leftmost label.
+      <li>The public suffix is the set of labels from the domain which directly match the labels of the prevailing rule (joined by dots).
+      <li>The registered domain is the public suffix plus one additional label. 
+    </ol>
+    
+<!-- start footer -->
+
 	</div>
 
 	<div id="footer">
 		<div id="footer-content">
 		<div id="footer-left">
-			&copy; Copyright 2007 <a href="http://www.mozilla.org/">Mozilla Foundation</a>. All rights reserved.<br />
+			&copy; Copyright 2007-9 <a href="http://www.mozilla.org/">Mozilla Foundation</a>. All rights reserved.<br />
 			Design by <a href="http://www.styleshout.com/">styleshout</a> and <a href="http://www.rubenarakelyan.com/">Ruben Arakelyan</a>.
 		</div>
 		</div>

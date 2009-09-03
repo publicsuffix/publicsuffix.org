@@ -221,7 +221,7 @@ ol li {
 	text-decoration: none;
 }
 
-#menu ul li a:hover, #menu ul li#current a {
+#menu ul li a:hover {
 	background: #fafafa;
   	color: #333;
 }
