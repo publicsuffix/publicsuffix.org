@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Learn more about the Public Suffix List</title>
+<link rel="stylesheet" href="/styles.css">
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div id="page">
+
+    <header>
+        <h1 class="site-title">
+            <a href="/" title="Return to the Public Suffix List homepage">Public Suffix List</a>
+        </h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/learn/">Learn More</a>
+            </li>
+            <li>
+                <a href="/list/">The List</a>
+            </li>
+            <li>
+                <a href="/submit/">Submit Amendments</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>
+            Learn more about the Public Suffix List
+        </h2>
+        <p>
+            The Public Suffix List is a cross-vendor initiative to provide an accurate list of domain name suffixes, maintained by the hard work of Mozilla volunteers and by submissions from registries, to whom we are very grateful.
+        </p>
+        <p>
+            The usefulness of this can be seen if we take the example of cookies. In the past, browsers used an algorithm which only denied setting wide-ranging cookies for top-level domains with no dots (e.g. <samp>com</samp> or <samp>org</samp>). However, this did not work for top-level domains where only third-level registrations are allowed (e.g. <samp>co.uk</samp>). In these cases, websites could set a cookie for <samp>.co.uk</samp> which would be passed onto every website registered under <samp>co.uk</samp>.
+        </p>
+        <p>
+            Since there was and remains no algorithmic method of finding the highest level at which a domain may be registered for a particular top-level domain (the policies differ with each registry), the only method is to create a list. This is the aim of the Public Suffix List.
+        </p>
+        <p>
+            Software using the Public Suffix List will be able to detemine where cookies may and may not be set, protecting the user from being tracked across sites.
+        </p>
+        <p>
+            As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.
+        </p>
+        <p>
+            For more information, please <a href="mailto:contact@publicsuffix.org">contact us</a>.
+        </p>
+        <h3>
+            Uses
+        </h3>
+        <p>
+            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes.
+        </p>
+        <h4>
+            Firefox
+        </h4>
+        <ul>
+            <li>
+                Restricting cookie setting
+            </li>
+            <li>
+                Restricting the setting of the document.domain property
+            </li>
+            <li>
+                Sorting in the download manager
+            </li>
+            <li>
+                Sorting in the cookie manager
+            </li>
+            <li>
+                Searching in history
+            </li>
+            <li>
+                "Responsible domain" display for some SSL certificate
+            </li>
+        </ul>
+        <p>
+            In the future it may be used for, for example, restricting DOM Storage allowances on a per-domain basis.
+        </p>
+        <h4>
+            Chromium/Google Chrome (<a href="http://src.chromium.org/viewvc/chrome/trunk/src/net/tools/tld_cleanup/tld_cleanup.cc?view=markup">pre-processing</a>, <a href="http://src.chromium.org/viewvc/chrome/trunk/src/net/base/registry_controlled_domain.cc?view=markup">parser</a>)
+        </h4>
+        <ul>
+            <li>
+                Restricting cookie setting
+            </li>
+            <li>
+                Determining whether entered text is a search or a website URL
+            </li>
+        </ul>
+        <h4>
+            Opera
+        </h4>
+        <ul>
+            <li>
+                Restricting cookie setting
+            </li>
+            <li>
+                Restricting the setting of the document.domain property
+            </li>
+        </ul>
+        <p>
+            <a href="http://www.dkim-reputation.org/regdom-libs/">regdom-libs</a> includes C, Perl and PHP libraries for working with the Public Suffix List.
+        </p>
+        <p>
+            <a href="http://code.google.com/p/guava-libraries/">Guava</a> - Google's core Java libraries - has a <a href="http://guava-libraries.googlecode.com/svn/trunk/javadoc/com/google/common/net/InternetDomainName.html">PSL-using class</a>.
+        </p>
+        <p>
+            <a href="http://qt.nokia.com/">QT</a> uses it to restrict cookie setting from version 4.7.2 onwards.
+        </p>
+        <p>
+            <a href="http://www.whoismind.com/">WhoisMind</a> uses it to get the domain name out of inputted URLs.
+        </p>
+    </section>
+
+</div>
+
+<footer>
+    <div>
+        <p>
+            Copyright &#169; 2007&#8211;11 <a href="http://www.mozilla.org/">Mozilla Foundation</a>.
+        </p>
+        <p>
+            Site by <a href="http://twentyfournine.co.uk/">TwentyFourNine</a>.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

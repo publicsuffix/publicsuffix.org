@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>View the Public Suffix List</title>
+<link rel="stylesheet" href="/styles.css">
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+</head>
+
+<body>
+
+<div id="page">
+
+    <header>
+        <h1 class="site-title">
+            <a href="/" title="Return to the Public Suffix List homepage">Public Suffix List</a>
+        </h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li>
+                <a href="/learn/">Learn More</a>
+            </li>
+            <li>
+                <a href="/list/">The List</a>
+            </li>
+            <li>
+                <a href="/submit/">Submit Amendments</a>
+            </li>
+        </ul>
+    </nav>
+
+    <section>
+        <h2>
+            View the Public Suffix List
+        </h2>
+        <p>
+            The list is kept in source code control at mozilla.org. Top-level domains are listed in alphabetical order. You can read more information on the format the list uses below. <strong>Please note that the list is encoded using UTF-8.</strong>
+        </p>
+        <div class="button">
+            <a href="http://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1">See the list</a>
+        </div>
+        <p>
+            To be kept informed of changes to the list, you can subscribe to an <a href="http://hg.mozilla.org/mozilla-central/atom-log/default/netwerk/dns/effective_tld_names.dat">Atom change feed</a> in your favourite feed reader.
+        </p>
+        <h2 id="list-format">
+            List format
+        </h2>
+        <p>
+            A public suffix is a set of DNS names or wildcards concatenated with dots. It represents the part of a domain name which is <strong>not</strong> under the control of the individual registrant.
+        </p>
+        <h3>
+            Specification
+        </h3>
+        <ul>
+            <li>
+                The list is a set of rules, with one rule per line.
+            </li>
+            <li>
+                Each line is only read up to the first whitespace; entire lines can also be commented using <code>//</code>.
+            </li>
+            <li>
+                Each line which is not entirely whitespace or begins with a comment contains a rule.
+            </li>
+            <li>
+                Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. A leading dot is optional.
+            </li>
+            <li>
+                The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.)
+            </li>
+            <li>
+                Wildcards may only be used to wildcard an entire level. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line).
+            </li>
+            <li>
+                If a hostname matches more than one rule in the file, the longest matching rule (the one with the most levels) will be used.
+            </li>
+            <li>
+                An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule takes priority over any other matching rule.
+            </li>
+        </ul>
+        <h3>
+            Example
+        </h3>
+        <p>
+            Here is an example (incomplete) list section. The rules are numbered, but the numbers would not appear in the real file:
+        </p>
+        <pre>
+            <em>1.</em> com
+            
+            <em>2.</em> *.jp
+            // Hosts in .hokkaido.jp can't set cookies below level 4...
+            <em>3.</em> *.hokkaido.jp
+            <em>4.</em> *.tokyo.jp
+            // ...except hosts in pref.hokkaido.jp, which can set cookies at level 3.
+            <em>5.</em> !pref.hokkaido.jp
+            <em>6.</em> !metro.tokyo.jp
+        </pre>
+        <p>
+            The example above would be interpreted as follows, in the case of cookie-setting, and using "foo" and "bar" as generic hostnames:
+        </p>
+        <ol>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>foo.com</samp>.
+            </li>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>foo.bar.jp</samp>.<br>
+                Cookies <strong>may not</strong> be set for <samp>bar.jp</samp>.
+            </li>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>foo.bar.hokkaido.jp</samp>.<br>
+                Cookies <strong>may not</strong> be set for <samp>bar.hokkaido.jp</samp>.
+            </li>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>foo.bar.tokyo.jp</samp>.<br>
+                Cookies <strong>may not</strong> be set for <samp>bar.tokyo.jp</samp>.
+            </li>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>pref.hokkaido.jp</samp> because the exception overrides the previous rule.
+            </li>
+            <li>
+                Cookies <strong>may</strong> be set for <samp>metro.tokyo.jp</samp>, because the exception overrides the previous rule.
+            </li>
+        </ol>
+        <h3>
+            Formal algorithm
+        </h3>
+        <p>
+            Here is an algorithm for determining the Public Suffix of a domain. (Note: it may not be the most efficient algorithm.) The domain and all rules must be canonicalized in the normal way for hostnames - lower-case, Punycode (<a href="http://www.ietf.org/rfc/rfc3492.txt">RFC 3492</a>).
+        </p>
+        <h4>
+            Definitions
+        </h4>
+        <ul>
+            <li>
+                The Public Suffix List consists of a series of lines, separated by <code>\n</code>.
+            </li>
+            <li>
+                Each line is only read up to the first whitespace; entire lines can also be commented using <code>//</code>.
+            </li>
+            <li>
+                Each line which is not entirely whitespace or begins with a comment contains a rule.
+            </li>
+            <li>
+                A rule may begin with a "!" (exclamation mark). If it does, it is labelled as a "exception rule" and then treated as if the exclamation mark is not present.
+            </li>
+            <li>
+                A domain or rule can be split into a list of labels using the separator "." (dot). The separator is not part of any of the labels.
+            </li>
+            <li>
+                A domain is said to match a rule if, when the domain and rule are both split, and one compares the labels from the rule to the labels from the domain, beginning at the right hand end, one finds that for every pair either they are identical, or that the label from the rule is "*" (star). The domain may legitimately have labels remaining at the end of this matching process.
+            </li>
+        </ul>
+        <h4>
+            Algorithm
+        </h4>
+        <ol>
+            <li>
+                Match domain against all rules and take note of the matching ones.
+            </li>
+            <li>
+                If no rules match, the prevailing rule is "*".
+            </li>
+            <li>
+                If more than one rule matches, the prevailing rule is the one which is an exception rule.
+            </li>
+            <li>
+                If there is no matching exception rule, the prevailing rule is the one with the most labels.
+            </li>
+            <li>
+                If the prevailing rule is a exception rule, modify it by removing the leftmost label.
+            </li>
+            <li>
+                The public suffix is the set of labels from the domain which directly match the labels of the prevailing rule (joined by dots).
+            </li>
+            <li>
+                The registered domain is the public suffix plus one additional label.
+            </li>
+        </ol>
+    </section>
+
+</div>
+
+<footer>
+    <div>
+        <p>
+            Copyright &#169; 2007&#8211;11 <a href="http://www.mozilla.org/">Mozilla Foundation</a>.
+        </p>
+        <p>
+            Site by <a href="http://twentyfournine.co.uk/">TwentyFourNine</a>.
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>
