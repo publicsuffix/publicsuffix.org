@@ -38,8 +38,14 @@
         <p>
             The list is kept in source code control at mozilla.org. Top-level domains are listed in alphabetical order. You can read more information on the format the list uses below. <strong>Please note that the list is encoded using UTF-8.</strong>
         </p>
+        <p>The copy on publicsuffix.org, linked below, is updated daily from mozilla.org's source code management
+        system. If you wish to make your app download an updated list periodically,
+        <strong>please use this URL and have your app download the list no more than once per day</strong>.
+        (The list usually changes a few times per month; more frequent downloading is pointless and
+        hammers our servers.)</p>
+        
         <div class="button">
-            <a href="http://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1">See the list</a>
+            <a href="effective_tld_names.dat">See the list</a>
         </div>
         <p>
             To be kept informed of changes to the list, you can subscribe to an <a href="http://hg.mozilla.org/mozilla-central/atom-log/default/netwerk/dns/effective_tld_names.dat">Atom change feed</a> in your favourite feed reader.
