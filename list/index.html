@@ -151,10 +151,14 @@
                 A rule may begin with a "!" (exclamation mark). If it does, it is labelled as a "exception rule" and then treated as if the exclamation mark is not present.
             </li>
             <li>
-                A domain or rule can be split into a list of labels using the separator "." (dot). The separator is not part of any of the labels.
+                A domain or rule can be split into a list of labels using the separator "." (dot). The separator is not part of any of the labels. Empty labels are not permitted, meaning that leading and trailing dots are ignored.
             </li>
             <li>
-                A domain is said to match a rule if, when the domain and rule are both split, and one compares the labels from the rule to the labels from the domain, beginning at the right hand end, one finds that for every pair either they are identical, or that the label from the rule is "*" (star). The domain may legitimately have labels remaining at the end of this matching process.
+                A domain is said to match a rule if and only if all of the following conditions are met:
+                <ul>
+                    <li>When the domain and rule are split into corresponding labels, that the domain contains as many or more labels than the rule.</li>
+                    <li>Beginning with the right-most labels of both the domain and the rule, and continuing for all labels in the rule, one finds that for every pair, either they are identical, or that the label from the rule is "*".</li>
+                </ul>
             </li>
         </ul>
         <h4>
@@ -177,7 +181,7 @@
                 If the prevailing rule is a exception rule, modify it by removing the leftmost label.
             </li>
             <li>
-                The public suffix is the set of labels from the domain which directly match the labels of the prevailing rule (joined by dots).
+                The public suffix is the set of labels from the domain which match the labels of the prevailing rule, using the matching algorithm above.
             </li>
             <li>
                 The registered or registrable domain is the public suffix plus one additional label.
