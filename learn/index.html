@@ -54,7 +54,11 @@
             Some people use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>, particularly in these days where new gTLDs are arriving at a rapid pace, if your software does not regularly receive PSL updates, because it will erroneously think new gTLDs are not valid. The DNS is the proper source for this information. If you must use it for this purpose, please do not bake static copies of the PSL into your software with no update mechanism. 
         </p>
         <p>
-            For more information, please <a href="mailto:contact@publicsuffix.org">contact us</a>.
+            For more information, please
+            <a href="../contact/"
+     onclick="this.href=obfuscate_email_team();"    
+     onmouseover="window.status=obfuscate_email_team();return true;" 
+     onmouseout="window.status='';return true;">contact us</a>.
         </p>
         <h3>
             Uses
@@ -192,6 +196,15 @@
     </section>
 
 </div>
+
+<script type="text/javascript">
+function obfuscate_email_team() {
+  email_start = "mailto:team";
+  email_end = ".org";
+  email_middle = "@publicsuffix";
+  return email_start + email_middle + email_end;
+}
+</script>
 
 <footer>
     <div>

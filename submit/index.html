@@ -53,7 +53,10 @@
                 <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified diff</a>.
                 For fastest service, please attach that diff to a <a href="https://bugzilla.mozilla.org/enter_bug.cgi?bug_severity=normal&bug_status=NEW&component=Networking%3A%20Domain%20Lists&form_name=enter_bug&op_sys=All&product=Core&rep_platform=All&short_desc=PSL%20update%20for">Bugzilla bug created using this link</a>
                 (you will need a Bugzilla account), but we will also accept
-                <a href="mailto:submissions@publicsuffix.org">an email</a> with a covering note.
+                <a href="../contact/"
+     onclick="this.href=obfuscate_email_team();"    
+     onmouseover="window.status=obfuscate_email_team();return true;" 
+     onmouseout="window.status='';return true;">an email</a> with a covering note.
             </li>
         </ol>
         <p>
@@ -62,6 +65,15 @@
     </section>
 
 </div>
+
+<script type="text/javascript">
+function obfuscate_email_team() {
+  email_start = "mailto:team";
+  email_end = ".org";
+  email_middle = "@publicsuffix";
+  return email_start + email_middle + email_end;
+}
+</script>
 
 <footer>
     <div>

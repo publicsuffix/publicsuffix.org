@@ -50,7 +50,10 @@
             </li>
         </ul>
         <p>
-            We maintain a <a href="/learn/">fuller (although not exhaustive) list</a> of what people are using it for. If you are using it for something else, you are encouraged to <a href="mailto:contact@publicsuffix.org">tell us</a>, because it helps us to assess the potential impact of changes.
+            We maintain a <a href="/learn/">fuller (although not exhaustive) list</a> of what people are using it for. If you are using it for something else, you are encouraged to <a href="contact/"
+     onclick="this.href=obfuscate_email_team();"    
+     onmouseover="window.status=obfuscate_email_team();return true;" 
+     onmouseout="window.status='';return true;">tell us</a>, because it helps us to assess the potential impact of changes.
         </p>
         <p>
             It is in the interest of Internet registries to see that their section of the list is up to date. If it is not, their customers may have trouble setting cookies, or data about their sites may display sub-optimally. So we encourage them to maintain their section of the list by <a href="/submit/">submitting amendments</a>.
@@ -58,6 +61,15 @@
     </section>
 
 </div>
+
+<script type="text/javascript">
+function obfuscate_email_team() {
+  email_start = "mailto:team";
+  email_end = ".org";
+  email_middle = "@publicsuffix";
+  return email_start + email_middle + email_end;
+}
+</script>
 
 <footer>
     <div>
