@@ -187,13 +187,30 @@
                 The registered or registrable domain is the public suffix plus one additional label.
             </li>
         </ol>
+        <h3>Divisions</h3>
+        <p>The Public Suffix List is subdivided, using markers in the comments, into two sections, labelled as ICANN domains and PRIVATE domains.</p>
+
+        <p>ICANN domains are those delegated by ICANN or part of the IANA root zone database. The authorized registry may express further
+        policies on how they operate the TLD, such as subdivisions within it. Updates to this section can be submitted by anyone, but
+        if they are not an authorized representative of the registry then they will need to back up their claims of error with documentation
+        from the registry's website.</p>
+
+        <p>PRIVATE domains are amendments submitted by the domain holder, as an expression of how they operate their domain security policy.
+        Updates to this section are only accepted from authorized representatives of the domain registrant.
+        </p>
+
+        <p>While some applications, such as browsers when considering cookie-setting, treat all entries the same, other applications may wish to
+        treat ICANN domains and PRIVATE domains differently. For example, Certification Authorities checking for
+        wildcard misissuance would not issue a "*.com" wildcard cert ("com" is in the ICANN domains list) but could legitimately issue a "*.appspot.com"
+        wildcard cert to the domain owner, in this case Google ("appspot.com" is in the PRIVATE domains list).</p> 
+
         <h2>
         	Test Data
         </h2>
         <p>
         	There is a <a href="http://mxr.mozilla.org/mozilla-central/source/netwerk/test/unit/data/test_psl.txt?raw=1">short set of test data</a> available.
 
-            There is a short set of test data available. You will need to define a <samp>checkPublicSuffix()</samp>samp> function which takes as
+            There is a short set of test data available. You will need to define a <samp>checkPublicSuffix()</samp> function which takes as
             parameter a domain name and the registrable part of the domain, runs your implementation on the domain name and checks the result is the
             registrable domain expected.
 
