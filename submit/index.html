@@ -39,41 +39,42 @@
             In order to make the Public Suffix List as current and accurate as possible, we request that TLD registries put in place processes to keep their section of the list current and accurate. This will make sure that all sites within their TLD continue to function fully within modern browsers, in terms of the site owners' ability to set cookies and so on.
         </p>
         <p>
-            The procedure is as follows:
+            In addition, owners of privately-registered domains who themselves
+            issue subdomains to mutually-untrusting parties may wish to be
+            added to the PRIVATE section of the list.
+        <p>
+            The procedure to make changes is as follows:
         </p>
         <ol>
             <li>
                 Carefully read about the <a href="/list/#list-format">list format</a> to see how the list rules are defined.
             </li>
             <li>
-                <a href="/list/">View the list</a>, find your top-level domain, and then check the rules already there for accuracy.
+                <a href="/list/">View the list</a>, find your top-level domain
+                (if present), and then check the rules already there for accuracy.
             </li>
             <li>
-                If there are any additions, removals or amendments to be made, download the list file, make your changes and create a
-                <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified diff</a>.
-                For fastest service, please attach that diff to a <a href="https://bugzilla.mozilla.org/enter_bug.cgi?bug_severity=normal&bug_status=NEW&component=Networking%3A%20Domain%20Lists&form_name=enter_bug&op_sys=All&product=Core&rep_platform=All&short_desc=PSL%20update%20for">Bugzilla bug created using this link</a>
-                (you will need a Bugzilla account), but we will also accept
-                <a href="../contact/"
-     onclick="this.href=obfuscate_email_team();"    
-     onmouseover="window.status=obfuscate_email_team();return true;" 
-     onmouseout="window.status='';return true;">an email</a> with a covering note.
+                If there are any additions, removals or amendments to be made,
+                the best thing to do is to create a pull request for our
+                <a href="https://github.com/publicsuffix/list">Github repo</a>.
+                These days, you can pretty much do that using Github's GUI
+                without even having to install Git.
+                If that's not possible, then
+                <a href="https://github.com/publicsuffix/list/issues">file an issue</a>
+                on Github, ideally with a 
+                <a href="http://en.wikipedia.org/wiki/Diff#Unified_format">unified diff</a>
+                attached.
             </li>
         </ol>
         <p>
-            Please note that all emails must come from an address in your registry's official domain, otherwise they will be rejected. For each email submission received by us, a confirmation request will be sent. The confirmation exchange makes sure that only submissions genuinely from registry reps are included in the list.
+            Requests for changes to the PRIVATE section must come from the
+            domain owner. Requests for changes to the ICANN section either need
+            to come from the registry, or come with links to supporting
+            official documentation.
         </p>
     </section>
 
 </div>
-
-<script type="text/javascript">
-function obfuscate_email_team() {
-  email_start = "mailto:team";
-  email_end = ".org";
-  email_middle = "@publicsuffix";
-  return email_start + email_middle + email_end;
-}
-</script>
 
 <footer>
     <div>
