@@ -36,10 +36,9 @@
             View the Public Suffix List
         </h2>
         <p>
-            The list is kept in source code control at mozilla.org. Top-level domains are listed in alphabetical order. You can read more information on the format the list uses below. <strong>Please note that the list is encoded using UTF-8.</strong>
+            The list is kept in source code control on <a href="https://github.com/publicsuffix/list">Github</a>. You can read more information on the format the list uses below. <strong>Please note that the list is encoded using UTF-8.</strong>
         </p>
-        <p>The copy on publicsuffix.org, linked below, is updated daily from mozilla.org's source code management
-        system. If you wish to make your app download an updated list periodically,
+        <p>The copy on publicsuffix.org, linked below, is updated daily from Github. If you wish to make your app download an updated list periodically,
         <strong>please use this URL and have your app download the list no more than once per day</strong>.
         (The list usually changes a few times per month; more frequent downloading is pointless and
         hammers our servers.)</p>
@@ -48,7 +47,7 @@
             <a href="public_suffix_list.dat">See the list</a>
         </div>
         <p>
-            To be kept informed of changes to the list, you can subscribe to an <a href="http://hg.mozilla.org/mozilla-central/atom-log/default/netwerk/dns/effective_tld_names.dat">Atom change feed</a> in your favourite feed reader.
+            To be kept informed of changes to the list, you can subscribe to an <a href="https://github.com/publicsuffix/list/commits/master.atom">Atom change feed</a> in your favourite feed reader.
         </p>
         <h2 id="list-format">
             List format
@@ -73,7 +72,9 @@
                 Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. There is no leading dot.
             </li>
             <li>
-                The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.)
+                The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.) Wildcards
+                are <b>not</b> restricted to appear only in the leftmost position, but they must wildcard
+                an entire label. (I.e. *.*.foo is a valid rule: *bar.foo is not.)
             </li>
             <li>
                 Wildcards may only be used to wildcard an entire level. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line).
@@ -197,6 +198,7 @@
 
         <p>PRIVATE domains are amendments submitted by the domain holder, as an expression of how they operate their domain security policy.
         Updates to this section are only accepted from authorized representatives of the domain registrant.
+        This is so we can be certain they know what they are getting into.
         </p>
 
         <p>While some applications, such as browsers when considering cookie-setting, treat all entries the same, other applications may wish to
@@ -208,7 +210,7 @@
         	Test Data
         </h2>
         <p>
-        	There is a <a href="http://mxr.mozilla.org/mozilla-central/source/netwerk/test/unit/data/test_psl.txt?raw=1">short set of test data</a> available.
+        	There is a <a href="https://raw.githubusercontent.com/publicsuffix/list/master/tests/test_psl.txt">short set of test data</a> available.
 
             There is a short set of test data available. You will need to define a <samp>checkPublicSuffix()</samp> function which takes as
             parameter a domain name and the registrable part of the domain, runs your implementation on the domain name and checks the result is the
