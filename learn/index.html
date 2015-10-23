@@ -51,13 +51,13 @@
             As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.
         </p>
         <p>
-            Some people use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>, particularly in these days where new gTLDs are arriving at a rapid pace, if your software does not regularly receive PSL updates, because it will erroneously think new gTLDs are not valid. The DNS is the proper source for this information. If you must use it for this purpose, please do not bake static copies of the PSL into your software with no update mechanism. 
+            Some people use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>, particularly in these days where new gTLDs are arriving at a rapid pace, if your software does not regularly receive PSL updates, because it will erroneously think new gTLDs are not valid. The DNS is the proper source for this information. If you must use it for this purpose, please do not bake static copies of the PSL into your software with no update mechanism.
         </p>
         <p>
             For more information, please
             <a href="../contact/"
-     onclick="this.href=obfuscate_email_team();"    
-     onmouseover="window.status=obfuscate_email_team();return true;" 
+     onclick="this.href=obfuscate_email_team();"
+     onmouseover="window.status=obfuscate_email_team();return true;"
      onmouseout="window.status='';return true;">contact us</a>.
         </p>
         <h3>
@@ -65,8 +65,8 @@
         </h3>
         <p>
             These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to <a href="../contact/"
-     onclick="this.href=obfuscate_email_team();"    
-     onmouseover="window.status=obfuscate_email_team();return true;" 
+     onclick="this.href=obfuscate_email_team();"
+     onmouseover="window.status=obfuscate_email_team();return true;"
      onmouseout="window.status='';return true;">tell us</a>, because it helps us to assess the potential impact of changes.
         </p>
         <h4>
@@ -120,7 +120,7 @@
         <h4>
             Internet Explorer
         </h4>
-        <ul> 
+        <ul>
             <li>Restricting cookie setting</li>
             <li>Domain highlighting in the URL bar</li>
             <li>Zone determination </li>
@@ -135,6 +135,10 @@
         <p>
             <a href="http://www.whoismind.com/">WhoisMind</a> uses it to get the domain name out of inputted URLs.
         </p>
+        <p>
+            <a href="https://github.com/crawler-commons/crawler-commons">Crawler-Commons</a> is a suite of tools for building a web crawler, and it uses the PSL.
+        </p>
+
         <h4>
             Libraries
         </h4>
