@@ -53,21 +53,12 @@
         <p>
             Some people use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>, particularly in these days where new gTLDs are arriving at a rapid pace, if your software does not regularly receive PSL updates, because it will erroneously think new gTLDs are not valid. The DNS is the proper source for this information. If you must use it for this purpose, please do not bake static copies of the PSL into your software with no update mechanism.
         </p>
-        <p>
-            For more information, please
-            <a href="../contact/"
-     onclick="this.href=obfuscate_email_team();"
-     onmouseover="window.status=obfuscate_email_team();return true;"
-     onmouseout="window.status='';return true;">contact us</a>.
-        </p>
         <h3>
             Uses
         </h3>
         <p>
-            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to <a href="../contact/"
-     onclick="this.href=obfuscate_email_team();"
-     onmouseover="window.status=obfuscate_email_team();return true;"
-     onmouseout="window.status='';return true;">tell us</a>, because it helps us to assess the potential impact of changes.
+            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes. For that, you can use the <a href="https://groups.google.com/forum/#!forum/publicsuffix-discuss">psl-discuss</a> mailing list, where we consider issues related to the maintenance, format and semantics of the list. Note: please do not use this mailing list to
+     <a href="/submit/">request additions</a> to the PSL's data.
         </p>
         <h4>
             Firefox
@@ -242,7 +233,10 @@ of the Public Suffix List for determining what's registry-controlled.
             Other
         </h4>
         <ul>
-            <li>Let's Encrypt uses it for <a href="https://community.letsencrypt.org/t/rate-limits-for-lets-encrypt/6769">rate limiting</a> applications to their CA.</li>
+            <li>Let's Encrypt uses it for <a href="https://letsencrypt.org/docs/rate-limits/">rate limiting</a> applications to their CA. If you just need an exception from their rate limits,
+            please do not request a change to the list, but instead use their form, linked from
+            <a href="https://letsencrypt.org/docs/rate-limits/">their documentation</a>. This
+            is a faster way to achieve what you want.</li>
         </ul>
     </section>
 
