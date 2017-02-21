@@ -34,14 +34,6 @@ table {
     border-spacing: 0;
 }
 
-/* CSS fonts */
-@font-face {
-    font-family: MetaBlack;
-    font-weight: bold;
-    font-style: normal;
-    src: url(https://www.mozilla.org/img/fonts/MetaWebPro-Black.woff) format("woff");
-}
-
 /* Page */
 html {
     background: #fff url(/images/bg-header.png) left top repeat-x;
@@ -71,7 +63,6 @@ a:hover {
 }
 
 h1 {
-    font-family: MetaBlack;
     font-size: 40px;
     letter-spacing: -1px;
     text-transform: uppercase;
