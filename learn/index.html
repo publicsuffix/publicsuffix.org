@@ -51,7 +51,7 @@
             As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.
         </p>
         <p>
-            Some people use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>, particularly in these days where new gTLDs are arriving at a rapid pace, if your software does not regularly receive PSL updates, because it will erroneously think new gTLDs are not valid. The DNS is the proper source for this information. If you must use it for this purpose, please do not bake static copies of the PSL into your software with no update mechanism.
+            Some use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>.  gTLDs and ccTLDs are constantly updating, coming and going - and certainly not static.  If the PSL is incorporated in a static manner, and your software does not regularly receive PSL updates, it will erroneously think that valid TLDs are not valid, or conversely treat decommissioned TLDs that should be invalid as valid. The DNS should be the proper source for this information, despite the performance benefits of some local source to pre-empt network latency. If you must use the PSL for this purpose, please do not bake static copies of the PSL into your software without update mechanisms that are frequently checking for updates and incorporating them.
         </p>
         <h3>
             Uses
