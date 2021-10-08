@@ -51,13 +51,13 @@
             As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.
         </p>
         <p>
-            Some use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>.  gTLDs and ccTLDs are constantly updating, coming and going - and certainly not static.  If the PSL is incorporated in a static manner, and your software does not regularly receive PSL updates, it will erroneously think that valid TLDs are not valid, or conversely treat decommissioned TLDs that should be invalid as valid. The DNS should be the proper source for this information, despite the performance benefits of some local source to pre-empt network latency. If you must use the PSL for this purpose, please do not bake static copies of the PSL into your software without update mechanisms that are frequently checking for updates and incorporating them.
+            Some use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>.  gTLDs and ccTLDs are constantly updating, coming and going - and certainly not static.  If the PSL is incorporated in a static manner, and your software does not regularly receive PSL updates, it will erroneously think that valid TLDs are not valid, or conversely treat decommissioned TLDs that should be invalid as valid. The DNS should be the proper source for this information, despite the performance benefits of some local source to pre-empt network latency. If you must use the PSL for this purpose, please do not bake static copies of the PSL into your software without update mechanisms that are frequently checking for its frequent updates and incorporating them.
         </p>
         <h3>
             Uses
         </h3>
         <p>
-            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes. For that, you can use the <a href="https://groups.google.com/forum/#!forum/publicsuffix-discuss">psl-discuss</a> mailing list, where we consider issues related to the maintenance, format and semantics of the list. Note: please do not use this mailing list to
+            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes. For that, you can use the <a href="https://groups.google.com/forum/#!forum/publicsuffix-discuss">psl-discuss</a> mailing list, where we consider issues related to the maintenance, format and semantics of the list. Note: please <em>*do not*</em> use this mailing list to
      <a href="/submit/">request additions</a> to the PSL's data.
         </p>
         <h4>
@@ -238,10 +238,10 @@
             </li>
             <li>
                 <a href="http://cabforum.org/">CAB Forum Baseline Requirements</a>.
-The Baseline Requirements ban the issuance of wildcard
-certs where the wildcard is the next label immediately after a
-registry-controlled label, and suggests using the "ICANN DOMAINS" section
-of the Public Suffix List for determining what's registry-controlled.
+                The Baseline Requirements ban the issuance of wildcard
+                certs where the wildcard is the next label immediately after a
+                registry-controlled label, and suggests using the "ICANN DOMAINS" section
+                of the Public Suffix List for determining what's registry-controlled.
             </li>
             <li>
                 <a href="http://www.w3.org/TR/html5/">HTML 5</a> (document.domain)
@@ -251,10 +251,26 @@ of the Public Suffix List for determining what's registry-controlled.
             Other
         </h4>
         <ul>
-            <li>Let's Encrypt uses it for <a href="https://letsencrypt.org/docs/rate-limits/">rate limiting</a> applications to their CA. If you just need an exception from their rate limits,
-            please do not request a change to the list, but instead use their form, linked from
-            <a href="https://letsencrypt.org/docs/rate-limits/">their documentation</a>. This
-            is a faster way to achieve what you want.</li>
+            <li>
+                Let's Encrypt uses it for <a href="https://letsencrypt.org/docs/rate-limits/">rate limiting</a> 
+                applications to their CA. If you just need an exception from their rate 
+                limits, please do not request a change to the PSL, but instead use their 
+                form, linked from <a href="https://letsencrypt.org/docs/rate-limits/">their 
+                documentation</a>.  This is a faster way to achieve what you want, and the 
+                PSL is really not intended as a means to work around third party limits.
+            </li>
+            <li>
+                <a href="https://cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways, 
+                but most notably limits a domain to be available in only one account unless 
+                present in the PSL.  Again, third party limits are not something the PSL was 
+                designed for, so addressing account splitting with Cloudflare directly is the 
+                appropriate solution.
+            </li>
+            <li>
+                The <a href="https://tranco-list.eu/">Tranco</a> service that is widely used 
+                by security researchers uses the PSL as a means to aggregate domain listings 
+                sourced from Alexa, Majestic and Cisco Umbrella.
+            </li>
         </ul>
     </section>
 
@@ -263,7 +279,7 @@ of the Public Suffix List for determining what's registry-controlled.
 <footer>
     <div>
         <p>
-            Copyright &#169; 2007&#8211;16 <a href="https://www.mozilla.org/">Mozilla Foundation</a>.
+            Copyright &#169; 2007&#8211;21 <a href="https://www.mozilla.org/">Mozilla Foundation</a>.
         </p>
     </div>
 </footer>
