@@ -95,38 +95,35 @@
         <pre>
             <em>1.</em> com
             
-            <em>2.</em> *.jp
-            // Hosts in .hokkaido.jp can't set cookies below level 4...
-            <em>3.</em> *.hokkaido.jp
-            <em>4.</em> *.tokyo.jp
-            // ...except hosts in pref.hokkaido.jp, which can set cookies at level 3.
-            <em>5.</em> !pref.hokkaido.jp
-            <em>6.</em> !metro.tokyo.jp
+            <em>2.</em> jp
+
+            <em>3.</em> kagoshima.jp
+
+            // Hosts in .sendai.jp can't set cookies below level 4...
+            <em>4.</em> *.sendai.jp
+            
+            // ...except hosts in city.sendai.jp, which can set cookies at level 3.
+            <em>5.</em> !city.sendai.jp
         </pre>
         <p>
             The example above would be interpreted as follows, in the case of cookie-setting, and using "foo" and "bar" as generic hostnames:
         </p>
         <ol>
             <li>
-                Cookies <strong>may</strong> be set for <samp>foo.com</samp>.
+                Cookies <strong>may</strong> be set for <samp>bar.com</samp>.
             </li>
             <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.jp</samp>.
+                Cookies <strong>may</strong> be set for <samp>bar.jp</samp>.
             </li>
             <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.hokkaido.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.hokkaido.jp</samp>.
+                Cookies <strong>may</strong> be set for <samp>bar.kagoshima.jp</samp>.
             </li>
             <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.tokyo.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.tokyo.jp</samp>.
+                Cookies <strong>may not</strong> be set for <samp>bar.sendai.jp</samp>.<br>
+                Cookies <strong>may</strong> be set for <samp>foo.bar.sendai.jp</samp>.
             </li>
             <li>
-                Cookies <strong>may</strong> be set for <samp>pref.hokkaido.jp</samp> because the exception overrides the previous rule.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>metro.tokyo.jp</samp>, because the exception overrides the previous rule.
+                Cookies <strong>may</strong> be set for <samp>city.sendai.jp</samp>, because the exception overrides the previous rule.
             </li>
         </ol>
         <h3>
