@@ -60,165 +60,10 @@
         </h3>
         <ul>
             <li>
-                The list is a set of rules, with one rule per line.
-            </li>
-            <li>
-                Each line is only read up to the first whitespace; entire lines can also be commented using <code>//</code>.
-            </li>
-            <li>
-                Each line which is not entirely whitespace or begins with a comment contains a rule.
-            </li>
-            <li>
-                Each rule lists a public suffix, with the subdomain portions separated by dots (.) as usual. There is no leading dot.
-            </li>
-            <li>
-                The wildcard character * (asterisk) matches any valid sequence of characters in a hostname part. (Note: the list uses Unicode, not Punycode forms, and is encoded using UTF-8.) Wildcards
-                are <b>not</b> restricted to appear only in the leftmost position, but they must wildcard
-                an entire label. (I.e. *.*.foo is a valid rule: *bar.foo is not.)
-            </li>
-            <li>
-                Wildcards may only be used to wildcard an entire level. That is, they must be surrounded by dots (or implicit dots, at the beginning of a line).
-            </li>
-            <li>
-                If a hostname matches more than one rule in the file, the longest matching rule (the one with the most levels) will be used.
-            </li>
-            <li>
-                An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule takes priority over any other matching rule.
+                Please see the <a href="https://github.com/publicsuffix/list/wiki/">Public Suffix List Wiki</a> at the following link for information on the formatting and specifications: <a href="https://github.com/publicsuffix/list/wiki/Format#format">Format</a>.
             </li>
         </ul>
-        <h3 id="example">
-            Example
-        </h3>
-        <p>
-            Here is an example (incomplete) list section. The rules are numbered, but the numbers would not appear in the real file:
-        </p>
-        <pre>
-            <em>1.</em> com
-            
-            <em>2.</em> *.jp
-            // Hosts in .hokkaido.jp can't set cookies below level 4...
-            <em>3.</em> *.hokkaido.jp
-            <em>4.</em> *.tokyo.jp
-            // ...except hosts in pref.hokkaido.jp, which can set cookies at level 3.
-            <em>5.</em> !pref.hokkaido.jp
-            <em>6.</em> !metro.tokyo.jp
-        </pre>
-        <p>
-            The example above would be interpreted as follows, in the case of cookie-setting, and using "foo" and "bar" as generic hostnames:
-        </p>
-        <ol>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>foo.com</samp>.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.jp</samp>.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.hokkaido.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.hokkaido.jp</samp>.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>foo.bar.tokyo.jp</samp>.<br>
-                Cookies <strong>may not</strong> be set for <samp>bar.tokyo.jp</samp>.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>pref.hokkaido.jp</samp> because the exception overrides the previous rule.
-            </li>
-            <li>
-                Cookies <strong>may</strong> be set for <samp>metro.tokyo.jp</samp>, because the exception overrides the previous rule.
-            </li>
-        </ol>
-        <h3 id="algorithm">
-            Formal algorithm
-        </h3>
-        <p>
-            Here is an algorithm for determining the Public Suffix of a domain. (Note: it may not be the most efficient algorithm.) The domain, as well as all rules from the Public Suffix List, must be canonicalized in the normal way for hostnames - lower-case, Punycode (<a href="http://www.ietf.org/rfc/rfc3492.txt">RFC 3492</a>) - prior to being compared.
-        </p>
-        <h4>
-            Definitions
-        </h4>
-        <ul>
-            <li>
-                The Public Suffix List consists of a series of lines, separated by <code>\n</code>.
-            </li>
-            <li>
-                Each line is only read up to the first whitespace; entire lines can also be commented using <code>//</code>.
-            </li>
-            <li>
-                Each line which is not entirely whitespace or begins with a comment contains a rule.
-            </li>
-            <li>
-                A rule may begin with a "!" (exclamation mark). If it does, it is labelled as a "exception rule" and then treated as if the exclamation mark is not present.
-            </li>
-            <li>
-                A domain or rule can be split into a list of labels using the separator "." (dot). The separator is not part of any of the labels. Empty labels are not permitted, meaning that leading and trailing dots are ignored.
-            </li>
-            <li>
-                A domain is said to match a rule if and only if all of the following conditions are met:
-                <ul>
-                    <li>When the domain and rule are split into corresponding labels, that the domain contains as many or more labels than the rule.</li>
-                    <li>Beginning with the right-most labels of both the domain and the rule, and continuing for all labels in the rule, one finds that for every pair, either they are identical, or that the label from the rule is "*".</li>
-                </ul>
-            </li>
-        </ul>
-        <h4>
-            Algorithm
-        </h4>
-        <ol>
-            <li>
-                Match domain against all rules and take note of the matching ones.
-            </li>
-            <li>
-                If no rules match, the prevailing rule is "*".
-            </li>
-            <li>
-                If more than one rule matches, the prevailing rule is the one which is an exception rule.
-            </li>
-            <li>
-                If there is no matching exception rule, the prevailing rule is the one with the most labels.
-            </li>
-            <li>
-                If the prevailing rule is a exception rule, modify it by removing the leftmost label.
-            </li>
-            <li>
-                The public suffix is the set of labels from the domain which match the labels of the prevailing rule, using the matching algorithm above.
-            </li>
-            <li>
-                The registered or registrable domain is the public suffix plus one additional label.
-            </li>
-        </ol>
-        <h3 id="divisions">Divisions</h3>
-        <p>The Public Suffix List is subdivided, using markers in the comments, into two sections, labelled as ICANN domains and PRIVATE domains.</p>
-
-        <p>ICANN domains are those delegated by ICANN or part of the IANA root zone database. The authorized registry may express further
-        policies on how they operate the TLD, such as subdivisions within it. Updates to this section can be submitted by anyone, but
-        if they are not an authorized representative of the registry then they will need to back up their claims of error with documentation
-        from the registry's website.</p>
-
-        <p>PRIVATE domains are amendments submitted by the domain holder, as an expression of how they operate their domain security policy.
-        Updates to this section are only accepted from authorized representatives of the domain registrant.
-        This is so we can be certain they know what they are getting into.
-        </p>
-
-        <p>While some applications, such as browsers when considering cookie-setting, treat all entries the same, other applications may wish to
-        treat ICANN domains and PRIVATE domains differently. For example, Certification Authorities checking for
-        wildcard misissuance would not issue a "*.com" wildcard cert ("com" is in the ICANN domains list) but could legitimately issue a "*.appspot.com"
-        wildcard cert to the domain owner, in this case Google ("appspot.com" is in the PRIVATE domains list).</p> 
-
-        <h2 id="testdata">
-        	Test Data
-        </h2>
-        <p>
-        	There is a <a href="https://raw.githubusercontent.com/publicsuffix/list/master/tests/test_psl.txt">short set of test data</a> available.
-
-            You will need to define a <samp>checkPublicSuffix()</samp> function which takes as
-            parameter a domain name and the registrable part of the domain, runs your implementation on the domain name and checks the result is the
-            registrable domain expected.
-
-            Thanks to Rob Stradling of <a href="http://www.comodo.com/">Comodo</a> for
-        	providing this test data.
-        </p>
+        <p>This information was moved by <a href="https://github.com/dnsguru">Jothan Frakes</a> on February 8, 2022 to the GitHub Public Suffix List for simplification of management.</p>
     </section>
 
 </div>
@@ -226,7 +71,7 @@
 <footer>
     <div>
         <p>
-            Copyright &#169; 2007&#8211;20 <a href="https://www.mozilla.org/">Mozilla Foundation</a>.
+            Copyright &#169; 2007&#8211;22 <a href="https://www.mozilla.org/">Mozilla Foundation</a>.
         </p>
     </div>
 </footer>
