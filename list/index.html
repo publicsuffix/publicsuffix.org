@@ -55,7 +55,7 @@
         <p>
             A public suffix is a set of DNS names or wildcards concatenated with dots. It represents the part of a domain name which is <strong>not</strong> under the control of the individual registrant.
         </p>
-        <h3>
+        <h3 id="specification">
             Specification
         </h3>
         <ul>
@@ -86,7 +86,7 @@
                 An exclamation mark (!) at the start of a rule marks an exception to a previous wildcard rule. An exception rule takes priority over any other matching rule.
             </li>
         </ul>
-        <h3>
+        <h3 id="example">
             Example
         </h3>
         <p>
@@ -129,7 +129,7 @@
                 Cookies <strong>may</strong> be set for <samp>metro.tokyo.jp</samp>, because the exception overrides the previous rule.
             </li>
         </ol>
-        <h3>
+        <h3 id="algorithm">
             Formal algorithm
         </h3>
         <p>
@@ -188,7 +188,7 @@
                 The registered or registrable domain is the public suffix plus one additional label.
             </li>
         </ol>
-        <h3>Divisions</h3>
+        <h3 id="divisions">Divisions</h3>
         <p>The Public Suffix List is subdivided, using markers in the comments, into two sections, labelled as ICANN domains and PRIVATE domains.</p>
 
         <p>ICANN domains are those delegated by ICANN or part of the IANA root zone database. The authorized registry may express further
@@ -206,7 +206,7 @@
         wildcard misissuance would not issue a "*.com" wildcard cert ("com" is in the ICANN domains list) but could legitimately issue a "*.appspot.com"
         wildcard cert to the domain owner, in this case Google ("appspot.com" is in the PRIVATE domains list).</p> 
 
-        <h2>
+        <h2 id="testdata">
         	Test Data
         </h2>
         <p>
