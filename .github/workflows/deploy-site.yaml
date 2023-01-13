@@ -1,0 +1,57 @@
+---
+name: deploy website
+on:
+  workflow_dispatch: {}
+  workflow_call:
+    secrets:
+      GCP_PROJECT_NAME:
+        required: true
+      BUCKET_NAME:
+        required: true
+      WIP_PROJECT_ID:
+        required: true
+  push:
+    branches:
+      - master
+
+jobs:
+  upload-website:
+    name: Build and deploy website
+    environment: website
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      id-token: write
+
+    steps:
+      - name: Checkout publicsuffix/publicsuffix.org
+        uses: actions/checkout@v3
+        with:
+          repository: publicsuffix/publicsuffix.org
+          path: publicsuffix.org
+
+      - name: Checkout publicsuffix/list
+        uses: actions/checkout@v3
+        with:
+          repository: publicsuffix/list
+          path: list
+
+      - name: Authenticate with GCP
+        uses: google-github-actions/auth@v0
+        with:
+          token_format: access_token
+          service_account: deploy-website@${{ secrets.GCP_PROJECT_NAME }}.iam.gserviceaccount.com
+          workload_identity_provider: projects/${{ secrets.WIP_PROJECT_ID }}/locations/global/workloadIdentityPools/github-actions/providers/github-actions          
+
+      - name: Setup gcloud
+        uses: google-github-actions/setup-gcloud@v1
+
+      - name: Populate list in publicsuffix.org
+        run: |-
+          cp list/public_suffix_list.dat publicsuffix.org/list/
+          cp list/public_suffix_list.dat publicsuffix.org/list/effective_tld_names.dat
+
+      - name: Deploy website
+        run: |-
+          gsutil -m -q rsync -d -r -x ".git" publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
