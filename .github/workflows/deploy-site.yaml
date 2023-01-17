@@ -20,6 +20,10 @@ jobs:
     environment: website
     runs-on: ubuntu-latest
 
+    concurrency:
+      group: ${{ github.workflow }}
+      cancel-in-progress: true
+
     permissions:
       contents: read
       id-token: write
