@@ -14,15 +14,15 @@ on:
     branches:
       - master
 
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: true
+
 jobs:
   upload-website:
     name: Build and deploy website
     environment: website
     runs-on: ubuntu-latest
-
-    concurrency:
-      group: ${{ github.workflow }}
-      cancel-in-progress: true
 
     permissions:
       contents: read
