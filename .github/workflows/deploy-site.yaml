@@ -59,3 +59,4 @@ jobs:
       - name: Deploy website
         run: |-
           gsutil -m -q rsync -d -r -x ".git" publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
+          gsutil -m -q setmeta -h "Cache-Control:public, max-age=86400" gs://${{ secrets.BUCKET_NAME }}/**
