@@ -51,12 +51,8 @@ jobs:
       - name: Setup gcloud
         uses: google-github-actions/setup-gcloud@v1
 
-      - name: Populate list in publicsuffix.org
-        run: |-
-          cp list/public_suffix_list.dat publicsuffix.org/list/
-          cp list/public_suffix_list.dat publicsuffix.org/list/effective_tld_names.dat
-
       - name: Deploy website
         run: |-
-          gsutil -m -q rsync -d -r -x ".git" publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
-          gsutil -m -q setmeta -h "Cache-Control:public, max-age=86400" gs://${{ secrets.BUCKET_NAME }}/**
+          gsutil -m -h "Cache-Control:public, max-age=86400" rsync -d -r -x '\.git|\.dat$' publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
+          gsutil -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/public_suffix_list.dat
+          gsutil -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/effective_tld_names.dat
