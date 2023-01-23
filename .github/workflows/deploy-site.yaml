@@ -53,6 +53,6 @@ jobs:
 
       - name: Deploy website
         run: |-
-          gsutil -m -q -h "Cache-Control:public, max-age=86400" rsync -d -r -x ".git" publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
-          gsutil -q -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/public_suffix_list.dat
-          gsutil -q -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/effective_tld_names.dat
+          gsutil -m -h "Cache-Control:public, max-age=86400" rsync -d -r -x ".git|.dat$" publicsuffix.org/ gs://${{ secrets.BUCKET_NAME }}/
+          gsutil -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/public_suffix_list.dat
+          gsutil -h "Cache-Control:public, max-age=86400" -h "Content-Type:text/plain; charset=UTF-8" cp list/public_suffix_list.dat gs://${{ secrets.BUCKET_NAME }}/list/effective_tld_names.dat
