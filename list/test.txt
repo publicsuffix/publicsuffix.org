@@ -1,1 +1,0 @@
-# Moved - see http://mxr.mozilla.org/mozilla-central/source/netwerk/test/unit/data/test_psl.txt?raw=1
