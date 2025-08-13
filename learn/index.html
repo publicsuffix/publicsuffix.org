@@ -57,8 +57,7 @@
             Uses
         </h3>
         <p>
-            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes. For that, you can use the <a href="https://groups.google.com/forum/#!forum/publicsuffix-discuss">psl-discuss</a> mailing list, where we consider issues related to the maintenance, format and semantics of the list. Note: please <em>*do not*</em> use this mailing list to
-     <a href="/submit/">request additions</a> to the PSL's data.
+            These are some of the uses of the list we know about. If you are using it for something else, you are encouraged to tell us, because it helps us to assess the potential impact of changes. For that, you can use the <a href="https://groups.google.com/forum/#!forum/publicsuffix-discuss">psl-discuss</a> mailing list, where we consider issues related to the maintenance, format and semantics of the list. Note: please <em>*do not*</em> use this mailing list to <a href="/submit/">request additions</a> to the PSL's data.
         </p>
         <h4>
             Firefox
@@ -130,114 +129,128 @@
             <a href="https://github.com/crawler-commons/crawler-commons">Crawler-Commons</a> is a suite of tools for building a web crawler, and it uses the PSL.
         </p>
 
-        <h4>
+        <h3>
             Libraries
-        </h4>
+        </h3>
+        <h4>C</h4>
+        <ul>
+            <li><a href="https://github.com/usrflo/registered-domain-libs/">regdom-libs</a> includes libraries for working with the Public Suffix List (also supports Perl and PHP)</li>
+            <li><a href="https://github.com/rockdaboot/libpsl">libpsl</a>, a fast offline PSL lookup library in C</li>
+            <li><a href="http://www.github.com/stricaud/faup">Faup</a>, a command line tool with a C library and Python bindings</li>
+        </ul>
+
+        <h4>C#</h4>
+        <ul>
+            <li><a href="https://github.com/tinohager/Nager.PublicSuffix">Nager.PublicSuffix</a></li>
+        </ul>
+
+        <h4>C++</h4>
+        <ul>
+            <li><a href="https://github.com/upa-url/upa">Upa URL</a></li>
+        </ul>
+
+        <h4>Elixir</h4>
+        <ul>
+            <li><a href="https://github.com/seomoz/publicsuffix-elixir">publicsuffix-elixir</a></li>
+        </ul>
+
+        <h4>Erlang</h4>
+        <ul>
+            <li><a href="https://github.com/sinkovsky/publicsuffix_erlang">publicsuffix_erlang</a></li>
+        </ul>
+
+        <h4>Go</h4>
+        <ul>
+            <li><a href="https://godoc.org/golang.org/x/net/publicsuffix">x/net/publicsuffix</a></li>
+            <li><a href="https://github.com/joeguo/tldextract">tldextract</a></li>
+            <li><a href="https://simonecarletti.com/code/publicsuffix-go/">publicsuffix-go</a></li>
+        </ul>
+
+        <h4>Haskell</h4>
+        <ul>
+            <li><a href="https://github.com/wereHamster/publicsuffix-haskell">publicsuffix-haskell</a></li>
+        </ul>
+
+        <h4>Java</h4>
+        <ul>
+            <li><a href="https://github.com/hamano/regdom4j/">regdom-libs</a></li>
+            <li><a href="https://github.com/google/guava">Guava</a> - Google's core Java libraries has a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a></li>
+            <li><a href="https://github.com/whois-server-list/public-suffix-list">public-suffix-list</a></li>
+        </ul>
+
+        <h4>JavaScript</h4>
+        <ul>
+            <li><a href="https://github.com/gorhill/publicsuffixlist.js">publicsuffixlist.js</a></li>
+            <li><a href="https://github.com/oncletom/tld.js">tld.js</a></li>
+        </ul>
+
+        <h4>Lua</h4>
+        <ul>
+            <li><a href="https://github.com/daurnimator/lua-psl">lua-psl</a></li>
+        </ul>
+
+        <h4>.NET</h4>
+        <ul>
+            <li><a href="https://github.com/louislouw/Louw.PublicSuffix">Louw.PublicSuffix</a></li>
+        </ul>
+
+        <h4>Objective-C</h4>
+        <ul>
+            <li><a href="https://github.com/kejinlu/KKDomain">KKDomain</a></li>
+        </ul>
+
+        <h4>Perl</h4>
+        <ul>
+            <li><a href="https://metacpan.org/pod/Domain::PublicSuffix">Domain::PublicSuffix</a></li>
+        </ul>
+
+        <h4>PHP</h4>
+        <ul>
+            <li><a href="https://github.com/jeremykendall/php-domain-parser">php-domain-parser</a></li>
+        </ul>
+
+        <h4>Python</h4>
+        <ul>
+            <li><a href="https://pypi.python.org/pypi/publicsuffix2/">publicsuffix2</a></li>
+            <li><a href="https://pypi.python.org/pypi/publicsuffixlist">publicsuffixlist</a></li>
+            <li><a href="https://pypi.python.org/pypi/tldextract/">tldextract</a></li>
+        </ul>
+
+        <h4>Raku</h4>
+        <ul>
+            <li><a href="https://raku.land/zef:jjatria/PublicSuffix">PublicSuffix</a></li>
+        </ul>
+
+        <h4>Ruby</h4>
+        <ul>
+            <li><a href="https://github.com/weppos/publicsuffix-ruby">publicsuffix-ruby</a></li>
+        </ul>
+
+        <h4>Rust</h4>
+        <ul>
+            <li><a href="https://github.com/rushmorem/publicsuffix">publicsuffix</a></li>
+            <li><a href="https://github.com/addr-rs/psl">psl</a></li>
+            <li><a href="https://github.com/addr-rs/addr">addr</a></li>
+            <li><a href="https://github.com/addr-rs/psl-types">psl-types</a></li>
+        </ul>
+
+        <h4>Swift</h4>
+        <ul>
+            <li><a href="https://github.com/Dashlane/SwiftDomainParser">Dashlane/SwiftDomainParser</a></li>
+            <li><a href="https://github.com/ameshkov/swift-psl">ameshkov/swift-psl</a></li>
+        </ul>
+
+        <h4>TypeScript</h4>
+        <ul>
+            <li><a href="https://github.com/remusao/tldts">tldts</a></li>
+        </ul>
         <p>
-            C, Perl and PHP: <a href="https://github.com/usrflo/registered-domain-libs/">regdom-libs</a> includes libraries for working with the Public Suffix List.
+            There's also a list of libraries in various languages in the comments on this <a href="http://stackoverflow.com/questions/288810/get-the-subdomain-from-a-url">Stack Overflow question</a>.
         </p>
-        <p>
-            C: <a href="https://github.com/rockdaboot/libpsl">libpsl</a>, a fast offline PSL lookup library in C
-        </p>
-        <p>
-            C: <a href="http://www.github.com/stricaud/faup">Faup</a>, a command line tool with a C library and Python bindings
-        </p>
-        <p>
-            C#: <a href="https://github.com/tinohager/Nager.PublicSuffix">Nager.PublicSuffix</a>
-        </p>
-        <p>
-            C++: <a href="https://github.com/upa-url/upa">Upa URL</a>
-        </p>
-        <p>
-            Elixir: <a href="https://github.com/seomoz/publicsuffix-elixir">publicsuffix-elixir</a>
-        </p>
-        <p>
-            Erlang: <a href="https://github.com/sinkovsky/publicsuffix_erlang">publicsuffix_erlang</a>
-        </p>
-        <p>
-	    Go: <a href="https://godoc.org/golang.org/x/net/publicsuffix">x/net/publicsuffix</a>
-        </p>
-        <p>
-            Go: <a href="https://github.com/joeguo/tldextract">tldextract</a>
-        </p>
-        <p>
-            Go: <a href="https://simonecarletti.com/code/publicsuffix-go/">publicsuffix-go</a>
-        </p>
-        <p>
-	    Haskell: <a href="https://github.com/wereHamster/publicsuffix-haskell">publicsuffix-haskell</a>
-        </p>
-        <p>
-            Java: <a href="https://github.com/hamano/regdom4j/">regdom-libs</a> has a Java port too
-        </p>
-        <p>
-            Java: <a href="https://github.com/google/guava">Guava</a> - Google's core Java libraries - has a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a>
-        </p>
-        <p>
-            Java: <a href="https://github.com/whois-server-list/public-suffix-list">Java API for the Public Suffix List</a>
-        </p>
-        <p>
-            JavaScript: <a href="https://github.com/gorhill/publicsuffixlist.js">publicsuffixlist.js</a>
-        </p>
-        <p>
-            JavaScript: <a href="https://github.com/oncletom/tld.js">tld.js</a>
-        </p>
-        <p>
-            TypeScript: <a href="https://github.com/remusao/tldts">tldts</a>
-        </p>
-        <p>
-            Lua: <a href="https://github.com/daurnimator/lua-psl">lua-psl</a>
-        </p>
-        <p>
-            .NET: <a href="https://github.com/louislouw/Louw.PublicSuffix">Louw.PublicSuffix</a>.
-        </p>
-        <p>
-            Objective-C: <a href="https://github.com/kejinlu/KKDomain">KKDomain</a>
-        </p>
-        <p>
-            Perl: <a href="https://metacpan.org/pod/Domain::PublicSuffix">Domain::PublicSuffix</a>
-        </p>
-        <p>
-            PHP: <a href="https://github.com/jeremykendall/php-domain-parser">php-domain-parser</a>
-        </p>
-        <p>
-            Python: <a href="https://pypi.python.org/pypi/publicsuffix2/">publicsuffix2</a>
-        </p>
-        <p>
-            Python: <a href="https://pypi.python.org/pypi/publicsuffixlist">publicsuffixlist</a>
-        </p>
-        <p>
-            Python: <a href="https://pypi.python.org/pypi/tldextract/">tldextract</a>
-        </p>
-        <p>
-            Raku: <a href="https://raku.land/zef:jjatria/PublicSuffix">PublicSuffix</a> - a static automatically updated interface
-        </p>
-        <p>
-            Ruby: <a href="https://github.com/weppos/publicsuffix-ruby">publicsuffix-ruby</a> gem
-        </p>
-        <p>
-            Rust: <a href="https://github.com/rushmorem/publicsuffix">publicsuffix</a> - a super-fast dynamic implementation that can be updated at runtime
-        </p>
-        <p>
-            Rust: <a href="https://github.com/addr-rs/psl">psl</a> - an even faster static implementation, compiled down to native Rust code
-        </p>
-        <p>
-            Rust: <a href="https://github.com/addr-rs/addr">addr</a> - a public suffix list based domain name and email address parser
-        </p>
-        <p>
-            Rust: <a href="https://github.com/addr-rs/psl-types">psl-types</a> - common types for the public suffix implementation crates
-        </p>
-		<p>
-            Swift: <a href="https://github.com/Dashlane/SwiftDomainParser">Dashlane/SwiftDomainParser</a>
-        </p>
-		<p>
-            Swift: <a href="https://github.com/ameshkov/swift-psl">ameshkov/swift-psl</a>
-        </p>
-	<p>
-	    There's also a list of libraries in various languages in the comments on this <a href="http://stackoverflow.com/questions/288810/get-the-subdomain-from-a-url">Stack Overflow question</a>.
-        </p>
-        <h4>
+
+        <h3>
             Standards
-        </h4>
+        </h3>
         <ul>
             <li>
                 <a href="http://dmarc.org/">DMARC</a>
@@ -253,28 +266,28 @@
                 <a href="http://www.w3.org/TR/html5/">HTML 5</a> (document.domain)
             </li>
         </ul>
-        <h4>
+        <h3>
             Other
-        </h4>
+        </h3>
         <ul>
             <li>
-                Let's Encrypt uses it for <a href="https://letsencrypt.org/docs/rate-limits/">rate limiting</a> 
-                applications to their CA. If you just need an exception from their rate 
-                limits, please do not request a change to the PSL, but instead use their 
-                form, linked from <a href="https://letsencrypt.org/docs/rate-limits/">their 
-                documentation</a>.  This is a faster way to achieve what you want, and the 
+                Let's Encrypt uses it for <a href="https://letsencrypt.org/docs/rate-limits/">rate limiting</a>
+                applications to their CA. If you just need an exception from their rate
+                limits, please do not request a change to the PSL, but instead use their
+                form, linked from <a href="https://letsencrypt.org/docs/rate-limits/">their
+                documentation</a>.  This is a faster way to achieve what you want, and the
                 PSL is really not intended as a means to work around third party limits.
             </li>
             <li>
-                <a href="https://cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways, 
-                but most notably limits a domain to be available in only one account unless 
-                present in the PSL.  Again, third party limits are not something the PSL was 
-                designed for, so addressing account splitting with Cloudflare directly is the 
+                <a href="https://cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways,
+                but most notably limits a domain to be available in only one account unless
+                present in the PSL.  Again, third party limits are not something the PSL was
+                designed for, so addressing account splitting with Cloudflare directly is the
                 appropriate solution.
             </li>
             <li>
-                The <a href="https://tranco-list.eu/">Tranco</a> service that is widely used 
-                by security researchers uses the PSL as a means to aggregate domain listings 
+                The <a href="https://tranco-list.eu/">Tranco</a> service that is widely used
+                by security researchers uses the PSL as a means to aggregate domain listings
                 sourced from Alexa, Majestic and Cisco Umbrella.
             </li>
         </ul>
