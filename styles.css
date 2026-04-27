@@ -48,6 +48,7 @@ body {
 
 #page {
     margin: 0 auto;
+    padding: 0 5px;
     max-width: 960px;
     position: relative;
 }
@@ -98,6 +99,7 @@ pre, code, samp {
 /* Header */
 header {
     padding-top: 35px;
+    max-width: 600px;
 }
 
 .site-title {
@@ -244,6 +246,7 @@ footer {
     background: #33559b url(/images/background.png) 0 0 repeat-x;
     color: #476fbe;
     font-family: Georgia, serif;
+    margin: 0 auto;
     padding: 115px 0 5px;
 }
 
@@ -259,7 +262,8 @@ footer a:hover, footer a:active, footer a:focus {
 
 footer div {
     margin: auto;
-    padding: 20px 0;
+    padding: 20px 5px;
+    max-width: 980px;
 }
 
 footer div p {
