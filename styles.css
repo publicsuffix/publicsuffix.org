@@ -48,9 +48,9 @@ body {
 
 #page {
     margin: 0 auto;
+    padding: 0 5px;
     max-width: 960px;
     position: relative;
-    width: 960px;
 }
 
 a {
@@ -246,7 +246,7 @@ footer {
     background: #33559b url(/images/background.png) 0 0 repeat-x;
     color: #476fbe;
     font-family: Georgia, serif;
-    min-width: 978px;
+    margin: 0 auto;
     padding: 115px 0 5px;
 }
 
@@ -262,8 +262,8 @@ footer a:hover, footer a:active, footer a:focus {
 
 footer div {
     margin: auto;
-    padding: 20px 0;
-    width: 980px;
+    padding: 20px 5px;
+    max-width: 980px;
 }
 
 footer div p {
