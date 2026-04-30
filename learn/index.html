@@ -45,13 +45,13 @@
             Since there was and remains no algorithmic method of finding the highest level at which a domain may be registered for a particular top-level domain (the policies differ with each registry), the only method is to create a list. This is the aim of the Public Suffix List.
         </p>
         <p>
-            Software using the Public Suffix List will be able to determine cookie inheritance boundaries between domains, preventing cookies set on one domain from being accessible to other domains under the same public suffix. This protects users from cross-domain cookies setting while still allowing individual domains to set their own cookies.
+            Software using the Public Suffix List will be able to determine cookie inheritance boundaries between domains, preventing cookies set on one domain from being accessible to other domains under the same public suffix. This protects users from cross-domain cookie setting while still allowing individual domains to set their own cookies.
         </p>
         <p>
             As well as this, the Public Suffix List can also be used to support features such as site grouping in browsers. By knowing where the user-controlled section of the domain name begins and ends, browsers can group cookies and history entries by site in a way that couldn't easily be done before.
         </p>
         <p>
-            Some use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>.  gTLDs and ccTLDs are constantly updating, coming and going - and certainly not static.  If the PSL is incorporated in a static manner, and your software does not regularly receive PSL updates, it will erroneously think that valid TLDs are not valid, or conversely treat decommissioned TLDs that should be invalid as valid. The DNS should be the proper source for this information, despite the performance benefits of some local source to pre-empt network latency. If you must use the PSL for this purpose, please do not bake static copies of the PSL into your software without update mechanisms that are frequently checking for its frequent updates and incorporating them.
+            Some use the PSL to determine what is a valid domain name and what isn't. <b>This is dangerous</b>.  gTLDs and ccTLDs are constantly updating, coming and going - and certainly not static.  If the PSL is incorporated in a static manner, and your software does not regularly receive PSL updates, it will erroneously think that valid TLDs are not valid, or conversely treat decommissioned TLDs that should be invalid as valid. The DNS should be the proper source for this information, despite the performance benefits of some local source to pre-empt network latency. If you must use the PSL for this purpose, please do not bake static copies of the PSL into your software without update mechanisms that are frequently checking for updates and incorporating them.
         </p>
         <h3>
             Uses
@@ -136,7 +136,7 @@
         <ul>
             <li><a href="https://github.com/usrflo/registered-domain-libs/">regdom-libs</a> includes libraries for working with the Public Suffix List (also supports Perl and PHP)</li>
             <li><a href="https://github.com/rockdaboot/libpsl">libpsl</a>, a fast offline PSL lookup library in C</li>
-            <li><a href="http://www.github.com/stricaud/faup">Faup</a>, a command line tool with a C library and Python bindings</li>
+            <li><a href="http://www.github.com/stricaud/faup">Faup</a>, a command-line tool with a C library and Python bindings</li>
         </ul>
 
         <h4>C#</h4>
@@ -179,7 +179,7 @@
         <h4>Java</h4>
         <ul>
             <li><a href="https://github.com/hamano/regdom4j/">regdom-libs</a></li>
-            <li><a href="https://github.com/google/guava">Guava</a> - Google's core Java libraries has a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a></li>
+            <li><a href="https://github.com/google/guava">Guava</a> - Google's core Java library has a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a></li>
             <li><a href="https://github.com/whois-server-list/public-suffix-list">public-suffix-list</a></li>
         </ul>
 
@@ -281,12 +281,12 @@
                 limits, please do not request a change to the PSL, but instead use their
                 form, linked from <a href="https://letsencrypt.org/docs/rate-limits/">their
                 documentation</a>.  This is a faster way to achieve what you want, and the
-                PSL is really not intended as a means to work around third party limits.
+                PSL is really not intended as a means to work around third-party limits.
             </li>
             <li>
                 <a href="https://cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways,
                 but most notably limits a domain to be available in only one account unless
-                present in the PSL.  Again, third party limits are not something the PSL was
+                present in the PSL.  Again, third-party limits are not something the PSL was
                 designed for, so addressing account splitting with Cloudflare directly is the
                 appropriate solution.
             </li>
