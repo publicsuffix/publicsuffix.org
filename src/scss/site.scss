@@ -1,0 +1,32 @@
+// Entry point for /styles.css, compiled by `npm run build`.
+// Protocol is loaded from node_modules (see scripts/build.mjs), and only the
+// parts of it that the site uses are imported.
+// Protocol documentation: https://protocol.mozilla.org/
+
+// Must come first: tells Protocol where scripts/build.mjs copies its fonts and
+// images, relative to /styles.css.
+@use 'includes/config' with (
+    $brand-theme: 'mozilla',
+    $type-scale: 'standard',
+    $font-path: 'assets/protocol/fonts',
+    $image-path: 'assets/protocol/img'
+);
+
+// Fonts (Mozilla brand)
+@use 'includes/fonts/mozilla-text';
+@use 'includes/fonts/mozilla-headline';
+
+// Theme custom properties on :root (brand fonts, colours, type scale, grid)
+@use 'includes/themes';
+
+// Base elements and utilities
+@use 'base/elements';
+@use 'base/utilities/rich-text';
+
+// Components
+@use 'components/button';
+@use 'components/footer';
+
+// Site-specific styles, built on Protocol tokens and mixins
+@use 'header';
+@use 'content';

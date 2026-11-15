@@ -1,0 +1,54 @@
+// Site title and primary navigation.
+// Protocol's navigation component is built around the Mozilla logo and a
+// JavaScript drop-down menu, neither of which this site uses, so this is a
+// small, script-free equivalent that follows the same typography and spacing.
+
+@use 'includes/lib' as *;
+
+.site-title {
+    @include text-title-sm;
+    margin: 0 0 $spacing-sm;
+
+    a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+}
+
+.site-nav {
+    @include text-body-md;
+    border-bottom: 1px solid $color-marketing-gray-30;
+    font-weight: bold;
+    margin-bottom: $layout-sm;
+    padding-bottom: $spacing-md;
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        gap: $spacing-xs $spacing-lg;
+        margin: 0;
+    }
+
+    a {
+        color: $color-black;
+        display: inline-block;
+        padding: $spacing-xs 0;
+        text-decoration: none;
+
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+
+        &[aria-current='page'] {
+            text-decoration: underline;
+            text-decoration-thickness: 2px;
+            text-underline-offset: 0.3em;
+        }
+    }
+}
