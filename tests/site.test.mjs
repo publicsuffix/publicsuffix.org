@@ -39,10 +39,21 @@ for (const [page, current] of Object.entries(pages)) {
     assert.doesNotMatch(html, /<link[^>]+href="(https?:)?\/\//i);
   });
 
+  test(`${page}: external links open in a new tab, internal links do not`, () => {
+    const links = [...read(page).matchAll(/<a\s[^>]*>/gi)].map((m) => m[0]);
+    assert.ok(links.length > 0);
+    for (const a of links) {
+      const external = /href="(https?:)?\/\//i.test(a);
+      const newTab = /\starget="_blank"/.test(a);
+      assert.equal(newTab, external, `target="_blank" iff external: ${a}`);
+      if (external) assert.match(a, /\srel="noopener"/, `missing rel="noopener": ${a}`);
+    }
+  });
+
   test(`${page}: footer copyright end year is filled in from the current year`, () => {
     assert.match(
       read(page),
-      /Copyright &#169; 2007&#8211;<span data-current-year>\d{2}<\/span> <a href="https:\/\/www\.mozilla\.org\/">Mozilla Foundation<\/a>\./,
+      /Copyright &#169; 2007&#8211;<span data-current-year>\d{2}<\/span> <a href="https:\/\/www\.mozilla\.org\/" target="_blank" rel="noopener">Mozilla Foundation<\/a>\./,
     );
   });
 }

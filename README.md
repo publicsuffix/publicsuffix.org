@@ -27,6 +27,9 @@ npm run build
 npm test
 ```
 
+Links to other websites open in a new tab: write them as
+`<a href="https://..." target="_blank" rel="noopener">`. Links within the site do not. `npm test` checks this.
+
 The footer copyright end year is filled in by `assets/js/current-year.js`; the year written in
 the HTML is only a fallback for clients without JavaScript.
 
