@@ -1,0 +1,32 @@
+// Page layout: keeps the footer at the bottom of the window on short pages.
+// The page content (#page) grows to fill the space left above the footer.
+
+@use 'includes/lib' as *;
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh; // excludes mobile browser toolbars where supported
+}
+
+#page {
+    flex: 1 0 auto;
+    // As a flex item with auto side margins, #page would shrink to fit its
+    // content. Give it the width it has as a normal block: the full width
+    // minus .mzp-l-content's side padding (same variables and breakpoints).
+    // max-width and the auto margins then centre it as usual.
+    width: calc(100% - 2 * var(--h-grid-xs));
+
+    @media #{$mq-md} {
+        width: calc(100% - 2 * var(--h-grid-md));
+    }
+
+    @media #{$mq-xl} {
+        width: calc(100% - 2 * var(--h-grid-xl));
+    }
+}
+
+.mzp-c-footer {
+    flex-shrink: 0;
+}

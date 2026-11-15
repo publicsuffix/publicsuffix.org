@@ -1,0 +1,43 @@
+---
+name: test website
+on:
+  pull_request: {}
+  push:
+    branches:
+      - main
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Build and test website
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7.0.1
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v7.1.0
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build stylesheet
+        run: npm run build
+
+      - name: Check committed build output is up to date
+        run: |-
+          if [ -n "$(git status --porcelain -- styles.css assets/)" ]; then
+            git status -- styles.css assets/
+            echo "::error::styles.css or assets/ is out of date. Run 'npm run build' and commit the result."
+            exit 1
+          fi
+
+      - name: Test
+        run: npm test

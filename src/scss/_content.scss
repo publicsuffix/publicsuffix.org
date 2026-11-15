@@ -1,0 +1,38 @@
+// Page content and footer adjustments on top of Protocol's base styles.
+
+@use 'includes/lib' as *;
+
+// Rich text from Protocol styles lists and headings; these add the remaining
+// inline elements the pages use.
+.mzp-u-rich-text {
+    > :first-child {
+        margin-top: 0;
+    }
+
+    samp,
+    code {
+        background-color: $color-light-gray-20;
+        border-radius: $border-radius-xs;
+        font-family: $font-stack-mono;
+        font-size: 0.9em;
+        padding: 0 0.25em;
+    }
+
+    // Protocol's reset sets these to normal weight.
+    b,
+    strong {
+        font-weight: bold;
+    }
+}
+
+.site-cta {
+    margin: $layout-xs 0;
+}
+
+.mzp-c-footer {
+    @include text-body-sm;
+
+    p {
+        margin: 0;
+    }
+}

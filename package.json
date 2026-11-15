@@ -1,0 +1,19 @@
+{
+  "name": "publicsuffix.org",
+  "private": true,
+  "description": "Source for the publicsuffix.org website",
+  "license": "MPL-2.0",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "html-validate \"*.html\" \"*/index.html\" && node --test tests/*.test.mjs"
+  },
+  "devDependencies": {
+    "@mozilla-protocol/core": "22.0.0",
+    "html-validate": "11.21.1",
+    "sass": "1.108.2"
+  }
+}
