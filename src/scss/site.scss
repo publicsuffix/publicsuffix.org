@@ -28,5 +28,6 @@
 @use 'components/footer';
 
 // Site-specific styles, built on Protocol tokens and mixins
+@use 'layout';
 @use 'header';
 @use 'content';
