@@ -32,16 +32,36 @@ for (const [page, current] of Object.entries(pages)) {
     assert.deepEqual(marked, current ? [current] : []);
   });
 
-  test(`${page}: loads no scripts or third-party resources`, () => {
+  test(`${page}: loads no third-party resources and only the footer-year script`, () => {
     const html = read(page);
-    assert.doesNotMatch(html, /<script/i);
+    const scripts = [...html.matchAll(/<script\b[^>]*>/gi)].map((m) => m[0]);
+    assert.deepEqual(scripts, ['<script src="/assets/js/current-year.js" defer>']);
     assert.doesNotMatch(html, /<link[^>]+href="(https?:)?\/\//i);
+  });
+
+  test(`${page}: footer copyright end year is filled in from the current year`, () => {
+    assert.match(
+      read(page),
+      /Copyright &#169; 2007&#8211;<span data-current-year>\d{2}<\/span> <a href="https:\/\/www\.mozilla\.org\/">Mozilla Foundation<\/a>\./,
+    );
   });
 }
 
 // Many clients fetch the list from this URL, relative to /list/.
 test('list page links to public_suffix_list.dat', () => {
   assert.match(read('list/index.html'), /href="public_suffix_list\.dat"/);
+});
+
+test('current-year.js writes the two-digit current year', async () => {
+  const els = [{ textContent: '00' }, { textContent: '00' }];
+  globalThis.document = { querySelectorAll: (sel) => (sel === '[data-current-year]' ? els : []) };
+  try {
+    await import(`../assets/js/current-year.js?${Date.now()}`);
+  } finally {
+    delete globalThis.document;
+  }
+  const yy = String(new Date().getFullYear()).slice(-2);
+  assert.deepEqual(els.map((e) => e.textContent), [yy, yy]);
 });
 
 test('robots.txt is unchanged', () => {

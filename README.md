@@ -27,5 +27,8 @@ npm run build
 npm test
 ```
 
+The footer copyright end year is filled in by `assets/js/current-year.js`; the year written in
+the HTML is only a fallback for clients without JavaScript.
+
 `npm test` validates the HTML and checks the stylesheet's assets, navigation and list link.
 The [test workflow](.github/workflows/test-site.yaml) also fails if the committed `styles.css` is stale.
