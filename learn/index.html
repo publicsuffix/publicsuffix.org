@@ -4,7 +4,6 @@
 <meta charset="utf-8">
 <title>Learn more about the Public Suffix List</title>
 <link rel="stylesheet" href="/styles.css">
-<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
@@ -83,11 +82,8 @@
                 Domain highlighting in the URL bar
             </li>
         </ul>
-        <p>
-            In the future it may be used for, for example, restricting DOM Storage allowances on a per-domain basis.
-        </p>
         <h4>
-            Chromium/Google Chrome (<a href="https://chromium.googlesource.com/chromium/src/+/master/net/tools/tld_cleanup/tld_cleanup.cc">pre-processing</a>, <a href="https://chromium.googlesource.com/chromium/src/+/master/net/tools/dafsa/make_dafsa.py">DAFSA builder</a>, <a href="https://chromium.googlesource.com/chromium/src/+/master/net/base/registry_controlled_domains/registry_controlled_domain.cc">parser</a>)
+            Chromium/Google Chrome (<a href="https://chromium.googlesource.com/chromium/src/+/main/net/tools/tld_cleanup/tld_cleanup.cc">pre-processing</a>, <a href="https://chromium.googlesource.com/chromium/src/+/main/net/tools/dafsa/make_dafsa.py">DAFSA builder</a>, <a href="https://chromium.googlesource.com/chromium/src/+/main/net/base/registry_controlled_domains/registry_controlled_domain.cc">parser</a>)
         </h4>
         <ul>
             <li>
@@ -99,26 +95,6 @@
             <li>
                 Determining whether wildcard subdomains are allowed in <a href="https://github.com/GoogleChrome/OriginTrials">Origin Trial</a> tokens
             </li>
-        </ul>
-        <h4>
-            Opera
-        </h4>
-        <ul>
-            <li>
-                Restricting cookie setting
-            </li>
-            <li>
-                Restricting the setting of the document.domain property
-            </li>
-        </ul>
-        <h4>
-            Internet Explorer
-        </h4>
-        <ul>
-            <li>Restricting cookie setting</li>
-            <li>Domain highlighting in the URL bar</li>
-            <li>Zone determination </li>
-            <li>ActiveX opt-in list security restriction</li>
         </ul>
         <h4>
             Other Apps
@@ -141,12 +117,12 @@
         <ul>
             <li><a href="https://github.com/usrflo/registered-domain-libs/">regdom-libs</a> includes libraries for working with the Public Suffix List (also supports Perl and PHP)</li>
             <li><a href="https://github.com/rockdaboot/libpsl">libpsl</a>, a fast offline PSL lookup library in C</li>
-            <li><a href="http://www.github.com/stricaud/faup">Faup</a>, a command-line tool with a C library and Python bindings</li>
+            <li><a href="https://github.com/stricaud/faup">Faup</a>, a command-line tool with a C library and Python bindings</li>
         </ul>
 
         <h4>C#</h4>
         <ul>
-            <li><a href="https://github.com/tinohager/Nager.PublicSuffix">Nager.PublicSuffix</a></li>
+            <li><a href="https://github.com/nager/Nager.PublicSuffix">Nager.PublicSuffix</a></li>
         </ul>
 
         <h4>C++</h4>
@@ -159,11 +135,6 @@
             <li><a href="https://github.com/reisub/public_sufx">public_sufx</a></li>
         </ul>
 
-        <h4>Erlang</h4>
-        <ul>
-            <li><a href="https://github.com/sinkovsky/publicsuffix_erlang">publicsuffix_erlang</a></li>
-        </ul>
-
         <h4>Gleam</h4>
         <ul>
             <li><a href="https://github.com/cassiascheffer/psl">psl</a></li>
@@ -171,27 +142,21 @@
 
         <h4>Go</h4>
         <ul>
-            <li><a href="https://godoc.org/golang.org/x/net/publicsuffix">x/net/publicsuffix</a></li>
+            <li><a href="https://pkg.go.dev/golang.org/x/net/publicsuffix">x/net/publicsuffix</a></li>
             <li><a href="https://github.com/joeguo/tldextract">tldextract</a></li>
             <li><a href="https://simonecarletti.com/code/publicsuffix-go/">publicsuffix-go</a></li>
         </ul>
 
-        <h4>Haskell</h4>
-        <ul>
-            <li><a href="https://github.com/wereHamster/publicsuffix-haskell">publicsuffix-haskell</a></li>
-        </ul>
-
         <h4>Java</h4>
         <ul>
-            <li><a href="https://github.com/hamano/regdom4j/">regdom-libs</a></li>
-            <li><a href="https://github.com/google/guava">Guava</a> - Google's core Java library has a <a href="https://google.github.io/guava/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a></li>
+            <li><a href="https://github.com/google/guava">Guava</a> - Google's core Java library has a <a href="https://guava.dev/releases/snapshot/api/docs/com/google/common/net/InternetDomainName.html">PSL-using class</a></li>
             <li><a href="https://github.com/whois-server-list/public-suffix-list">public-suffix-list</a></li>
         </ul>
 
         <h4>JavaScript</h4>
         <ul>
             <li><a href="https://github.com/gorhill/publicsuffixlist.js">publicsuffixlist.js</a></li>
-            <li><a href="https://github.com/oncletom/tld.js">tld.js</a></li>
+            <li><a href="https://github.com/thom4parisot/tld.js">tld.js</a></li>
         </ul>
 
         <h4>Lua</h4>
@@ -202,11 +167,6 @@
         <h4>.NET</h4>
         <ul>
             <li><a href="https://github.com/louislouw/Louw.PublicSuffix">Louw.PublicSuffix</a></li>
-        </ul>
-
-        <h4>Objective-C</h4>
-        <ul>
-            <li><a href="https://github.com/kejinlu/KKDomain">KKDomain</a></li>
         </ul>
 
         <h4>Perl</h4>
@@ -221,9 +181,8 @@
 
         <h4>Python</h4>
         <ul>
-            <li><a href="https://pypi.python.org/pypi/publicsuffix2/">publicsuffix2</a></li>
-            <li><a href="https://pypi.python.org/pypi/publicsuffixlist">publicsuffixlist</a></li>
-            <li><a href="https://pypi.python.org/pypi/tldextract/">tldextract</a></li>
+            <li><a href="https://pypi.org/project/publicsuffixlist/">publicsuffixlist</a></li>
+            <li><a href="https://pypi.org/project/tldextract/">tldextract</a></li>
         </ul>
 
         <h4>R</h4>
@@ -260,7 +219,7 @@
             <li><a href="https://github.com/remusao/tldts">tldts</a></li>
         </ul>
         <p>
-            There's also a list of libraries in various languages in the comments on this <a href="http://stackoverflow.com/questions/288810/get-the-subdomain-from-a-url">Stack Overflow question</a>.
+            There's also a list of libraries in various languages in the comments on this <a href="https://stackoverflow.com/questions/288810/get-the-subdomain-from-a-url">Stack Overflow question</a>.
         </p>
 
         <h3>
@@ -268,17 +227,17 @@
         </h3>
         <ul>
             <li>
-                <a href="http://dmarc.org/">DMARC</a>
+                <a href="https://dmarc.org/">DMARC</a>
             </li>
             <li>
-                <a href="http://cabforum.org/">CAB Forum Baseline Requirements</a>.
+                <a href="https://cabforum.org/">CAB Forum Baseline Requirements</a>.
                 The Baseline Requirements ban the issuance of wildcard
                 certs where the wildcard is the next label immediately after a
                 registry-controlled label, and suggests using the "ICANN DOMAINS" section
                 of the Public Suffix List for determining what's registry-controlled.
             </li>
             <li>
-                <a href="http://www.w3.org/TR/html5/">HTML 5</a> (document.domain)
+                <a href="https://html.spec.whatwg.org/multipage/browsers.html#dom-document-domain">HTML 5</a> (document.domain)
             </li>
         </ul>
         <h3>
@@ -294,7 +253,7 @@
                 PSL is really not intended as a means to work around third-party limits.
             </li>
             <li>
-                <a href="https://cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways,
+                <a href="https://www.cloudflare.com/">Cloudflare</a> uses the PSL in a number of ways,
                 but most notably limits a domain to be available in only one account unless
                 present in the PSL.  Again, third-party limits are not something the PSL was
                 designed for, so addressing account splitting with Cloudflare directly is the
